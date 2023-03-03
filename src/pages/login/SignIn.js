@@ -1,25 +1,90 @@
 import { useState } from "react";
-const SignIn = async () => {
+import SignUp from "./SignUp";
+const SignIn = () => {
     const [signInEmail, setSignInEmail] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
-    const signIn=async()=>{
+    const signIn = async () => {
         const response = await fetch("http://localhost:5000/logIn/signIn",
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ signInEmail, signInPassword })
-        })
-    console.log(response);
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ signInEmail, signInPassword })
+            })
+        if (response.ok)
+            alert("logged in");
+        else
+            alert("not found");
     }
-    
+
+    const newPassword=async()=>{
+        const response = await fetch("http://localhost:5000/logIn",
+            {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                query: JSON.stringify({signInEmail})
+            })
+        if (response.ok)
+            alert("logged in");
+        else
+            alert("not found");
+    }
+    const signUp=async()=>{
+       
+    }
     return (
-        <div><label>?משתמש קיים</label><br></br>
-            <input type="email" onChange={(e) => setSignInEmail(e.target.value)} placeholder="אימייל" /><br></br>
-            <input type="password" onChange={(e) => setSignInPassword(e.target.value)} placeholder="סיסמא" /><br></br>
-            <button onClick={signIn}>כניסה</button><br></br></div>
+        <div class="overlay">
+            {/* <!-- LOGN IN FORM by Omar Dsoky -->*/}
+            <form>
+                {/* <!--   con = Container  for items in the form--> */}
+                <div class="con">
+                    {/* <!--     Start  header Content  --> */}
+                    <header class="head-form">
+                        <h2>Log In</h2>
+                        {/* <!--     A welcome message or an explanation of the login form --> */}
+                        <p>login here using your username and password</p>
+                    </header>
+                    {/* <!--     End  header Content  --> */}
+                    <br></br>
+                    <div class="field-set">
+                        {/* <!--   user name --> */}
+                        <span class="input-item">
+                            <i class="fa fa-user-circle"></i>
+                        </span>
+                        {/* <!--   user name Input--> */}
+                        <input class="form-input" id="txt-input" type="text" placeholder="@UserName"  onChange={(e) => setSignInEmail(e.target.value)} ></input>
+                        <br></br>
+                        {/* <!--   Password --> */}
+                        <span class="input-item">
+                            <i class="fa fa-key"></i>
+                        </span>
+                        {/* <!--   Password Input--> */}
+                        <input class="form-input" type="password" placeholder="Password" id="pwd" name="password"  onChange={(e) => setSignInPassword(e.target.value)}></input>
+
+                        {/* <!--      Show/hide password  --> */}
+                        <span>
+                            <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                        </span>
+                        <br></br>
+                        {/* <!--        buttons --> */}
+                        {/* <!--      button LogIn --> */}
+                        <button class="log-in" onClick={signIn}> Log In </button>
+                    </div>
+                    {/* <!--   other buttons --> */}
+                    <div class="other">
+                        {/* <!--      Forgot Password button--> */}
+                        <button class="btn submits frgt-pass" onClick={newPassword}>Forgot Password</button>
+                        {/* <!--     Sign Up button --> */}
+                        <button class="btn submits sign-up" onClick={signUp}>Sign Up
+                            {/* <!--         Sign Up font icon --> */}
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     )
 }
 
 export default SignIn;
 
-    
+
