@@ -1,36 +1,43 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom"
 import SignUp from "./SignUp";
 const SignIn = () => {
     const [signInEmail, setSignInEmail] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
     const signIn = async () => {
+        const user = JSON.stringify({ signInEmail, signInPassword });
+        alert("checking");
         const response = await fetch("http://localhost:5000/logIn/signIn",
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ signInEmail, signInPassword })
+                body: user
             })
-        if (response.ok)
+        alert("checking");
+        debugger;
+        if (response.ok) {
+            const acssesToken = await response.json();
             alert("logged in");
+            sessionStorage.setItem("user", acssesToken);
+            alert(acssesToken);
+        }
         else
             alert("not found");
     }
 
-    const newPassword=async()=>{
+    const newPassword = async () => {
         const response = await fetch("http://localhost:5000/logIn",
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                query: JSON.stringify({signInEmail})
+                query: JSON.stringify({ signInEmail })
             })
         if (response.ok)
             alert("logged in");
         else
             alert("not found");
     }
-    const signUp=async()=>{
-       
-    }
+    
     return (
         <div class="overlay">
             {/* <!-- LOGN IN FORM by Omar Dsoky -->*/}
@@ -51,14 +58,14 @@ const SignIn = () => {
                             <i class="fa fa-user-circle"></i>
                         </span>
                         {/* <!--   user name Input--> */}
-                        <input class="form-input" id="txt-input" type="text" placeholder="@UserName"  onChange={(e) => setSignInEmail(e.target.value)} ></input>
+                        <input class="form-input" id="txt-input" type="text" placeholder="@UserName" onChange={(e) => setSignInEmail(e.target.value)} ></input>
                         <br></br>
                         {/* <!--   Password --> */}
                         <span class="input-item">
                             <i class="fa fa-key"></i>
                         </span>
                         {/* <!--   Password Input--> */}
-                        <input class="form-input" type="password" placeholder="Password" id="pwd" name="password"  onChange={(e) => setSignInPassword(e.target.value)}></input>
+                        <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" onChange={(e) => setSignInPassword(e.target.value)}></input>
 
                         {/* <!--      Show/hide password  --> */}
                         <span>
@@ -74,10 +81,11 @@ const SignIn = () => {
                         {/* <!--      Forgot Password button--> */}
                         <button class="btn submits frgt-pass" onClick={newPassword}>Forgot Password</button>
                         {/* <!--     Sign Up button --> */}
-                        <button class="btn submits sign-up" onClick={signUp}>Sign Up
-                            {/* <!--         Sign Up font icon --> */}
+                        <NavLink class="btn submits sign-up" to="/signUp">Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i></NavLink>
+                        {/* <button class="btn submits sign-up" onClick={signUp}>Sign Up
+                            <!--         Sign Up font icon -->
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </form>
