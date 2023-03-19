@@ -1,21 +1,28 @@
-import Login from "./pages/login/Login";
-
+import React from "react";
 import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
-import SignUp from "./pages/login/SignUp";
-import SignIn from "./pages/login/SignIn";
-
+import { NavLink } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import Home from "./components/Home";
+import Jobs from "./components/Jobs";
+import "./App.css";
 function App() {
   return (
    <Router>
      <nav className='main-nav'>
-          {/* <NavLink to="/">דף הבית</NavLink>
-          <NavLink to="/login">כניסה </NavLink>
-          <NavLink to="/register">הרשמה </NavLink>
-          <NavLink to="/book/list">ספרים </NavLink> */}
+          <label>שלום, "+אורח"</label>
+          <NavLink to="/"><img src="public\images\‏‏דף הבית.PNG"></img>דף הבית</NavLink>
+          <NavLink to="/signIn"><img src="public\images\‏‏התחברות.PNG"></img>התחברות</NavLink>
+          <NavLink to="/private"><img src="public\images\‏‏לכידה.PNG"></img>אזור אישי </NavLink>
+          <NavLink to="/jobs"><img src="public\images\‏‏משרות.PNG"></img>משרות </NavLink>
+          <NavLink to="/gettingEmployees"><img src="public\images\‏‏מגייסים עובדים.PNG"></img>מגייסים עובדים</NavLink>
+          <NavLink to="/inqueries"><img src="public\images\‏‏צרו קשר.PNG"></img>צרו קשר</NavLink>
         </nav>
     <Routes>
+      <Route path="/" element={<Home></Home>}></Route> 
       <Route path="signIn" element={<SignIn></SignIn>}></Route>
       <Route path="signUp" element={<SignUp></SignUp>}></Route>
+       <Route path="jobs" element={<Jobs></Jobs>}></Route> 
     </Routes>
    </Router>
   );
