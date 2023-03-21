@@ -6,6 +6,8 @@ import SignIn from "./components/SignIn";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import "./App.css";
+import "./components/style.css"
+import AddJob from "./components/AddJob";
 function App() {
   return (
    <Router>
@@ -22,7 +24,8 @@ function App() {
       <Route path="/" element={<Home></Home>}></Route> 
       <Route path="signIn" element={<SignIn></SignIn>}></Route>
       <Route path="signUp" element={<SignUp></SignUp>}></Route>
-       <Route path="jobs" element={<Jobs></Jobs>}></Route> 
+      <Route path="jobs" element={<Jobs></Jobs>}></Route> 
+      <Route path="gettingEmployees" element={<AddJob></AddJob>}></Route> 
     </Routes>
    </Router>
   );

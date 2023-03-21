@@ -53,7 +53,7 @@ const Home = () => {
     useEffect(() => { getOptions() }, [])
     return (
         <>
-        <h1>hello</h1>
+        {/* <h1>hello</h1> */}
             <Autocomplete
                 id="field"
                 style={{ width: 300 }}
@@ -83,7 +83,7 @@ const Home = () => {
                     />
                 )}
                 onChange={(event, value) => setSubject(value)}
-                // onBlur={(e)=>{setSubject(e.inputValue)}}
+
             />
             <Autocomplete
                 id="city"
@@ -100,17 +100,8 @@ const Home = () => {
                 )}
                 
                onChange={(event, value) => setCity(value)} // prints the selected value
-    // renderInput={params => (
-    //     <TextField {...params} label="Label" variant="outlined" fullWidth />
-    // )}
-/>
-                {/* onBlur={(event,value)=>{setCity(value)}}
-            /> */}
-
-            {/* <Autocomplete label="תחום" onSelect={e => setField(e.value)} />
-            <Autocomplete label="תחום" onSelect={e => setField(e.value)} />  */}
-
-            <button onClick={handleSearch}>חיפוש</button>
+            />
+            <button className="button" onClick={handleSearch}>חיפוש</button>
         </>);
 
 }

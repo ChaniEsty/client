@@ -148,7 +148,7 @@ input:focus {
 
 /* input[type="text"] {min-width: 250px;} */
 /* buttons  */
-button {
+.button {
     display: inline-block;
     color: #252537;
 
