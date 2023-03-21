@@ -7,7 +7,11 @@ import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import "./App.css";
 import "./components/style.css"
+<<<<<<< HEAD
 import PersonalArea from "./components/PersonalArea";
+=======
+import AddJob from "./components/AddJob";
+>>>>>>> bcecc12ac9951f51629ae6aaef8ba690e96f520a
 function App() {
   return (
    <Router>
@@ -24,9 +28,14 @@ function App() {
       <Route path="/" element={<Home></Home>}></Route> 
       <Route path="signIn" element={<SignIn></SignIn>}></Route>
       <Route path="signUp" element={<SignUp></SignUp>}></Route>
+<<<<<<< HEAD
        <Route path="jobs" element={<Jobs></Jobs>}></Route> 
        <Route path="personalArea" element={<PersonalArea></PersonalArea>}></Route> 
 
+=======
+      <Route path="jobs" element={<Jobs></Jobs>}></Route> 
+      <Route path="gettingEmployees" element={<AddJob></AddJob>}></Route> 
+>>>>>>> bcecc12ac9951f51629ae6aaef8ba690e96f520a
     </Routes>
    </Router>
   );

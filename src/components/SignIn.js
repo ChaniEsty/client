@@ -78,7 +78,7 @@ const SignIn = () => {
                         <br></br>
                         {/* <!--        buttons --> */}
                         {/* <!--      button LogIn --> */}
-                        <button className="log-in" type="button" onClick={()=>{ signIn()}}> Log In </button>
+                        <button className="button" type="button" onClick={()=>{ signIn()}}> Log In </button>
                     </div>
                     {/* <!--   other buttons --> */}
                     <div className="other">
