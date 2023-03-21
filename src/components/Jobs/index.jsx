@@ -1,6 +1,7 @@
 import Job from "./Job";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
+import makeListJobs from "./listJobs";
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const { search } = useLocation();
@@ -15,16 +16,11 @@ const Jobs = () => {
             })
         const jobList = await response.json();
         //jobs.map((job) => { <Job job={job}></Job> });
-        return jobList;
+       return await makeListJobs(jobList);
     }
-    const makeListJobs = async () => {
-        const jobList = await getJobs();
-        const jobMapped = jobList.map((job) => <Job job={job}></Job>);
-        // setJobs(jobMapped);
-        return jobMapped
-    }
+    
     useEffect(async() => {
-        const jobMapped=await makeListJobs();
+        const jobMapped=await getJobs();
         setJobs(jobMapped);
      }, [])
     // useEffect(async() => { await makeListJobs() }, [])
