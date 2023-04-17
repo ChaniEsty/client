@@ -8,18 +8,19 @@ const SignIn = () => {
     const [signInPassword, setSignInPassword] = useState("");
     const signIn = async () => {
         // debugger;
-        // const user = JSON.stringify({ signInEmail, signInPassword });
+         const user = JSON.stringify({ signInEmail, signInPassword });
         console.log("signin")
         const response = await axios.post ("http://localhost:5000/logIn/signIn",{ signInEmail, signInPassword })
-         console.log(response.data.accessToken)  
+        console.log(response.data.accessToken)  
         // const response = await fetch("http://localhost:5000/logIn/signIn",
         //     {
         //         method: 'POST',
         //         headers: { 'Content-Type': 'application/json' },
         //         body: user
         //     })
-        debugger;
-        if (response.statusText=="OK") {
+        // debugger;
+        if (response.statusText=="OK"){ 
+        // if (response.ok) {
             const acssesToken = response.data.accessToken;
             alert("logged in");
             sessionStorage.setItem("acssesToken", acssesToken);
@@ -30,12 +31,15 @@ const SignIn = () => {
     }
 
     const newPassword = async () => {
-        const response = await fetch("http://localhost:5000/logIn",
+        //const stringSignInEmail=JSON.stringify({ signInEmail })
+       // console.log(stringSignInEmail)
+        const response = await fetch(`http://localhost:5000/logIn/${signInEmail}/password`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                query: JSON.stringify({ signInEmail })
+                //query: JSON.stringify({ signInEmail })
             })
+            console.log(response);
         if (response.ok)
             alert("new password sent");
         else
