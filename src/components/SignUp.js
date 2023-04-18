@@ -23,7 +23,7 @@ const SignUp = () => {
             if(response.ok)
                 alert(`${role} added`);
             else
-                alert("can't add user");
+                alert(`can't add ${role}`);
         console.log(response);
     }
     return (
@@ -34,8 +34,8 @@ const SignUp = () => {
             <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder='דוא"ל' /><br></br>
             <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
             <input type="password" onChange={(e) => setCheckPassword(e.target.value)} placeholder="אימות סיסמא" /><br></br>
-            <button onClick={()=>{signUp("employer")}}>מעסיק</button>
-            <button onClick={()=>{signUp("employee")}}>מחפש תעסוקה</button></div>
+            <button onClick={()=>{signUp("מעסיק")}}>מעסיק</button>
+            <button onClick={()=>{signUp("מחפש תעסוקה")}}>מחפש תעסוקה</button></div>
     )
 }
 

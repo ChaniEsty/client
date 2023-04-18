@@ -57,7 +57,7 @@ function AddJob(){
       placeholder="דרישות"
       style={{ width: 200 }}
     />
- <button  onClick={handleSave}>שמירה</button>
+  <button  onClick={handleSave}>שמירה</button>
   
 
     </>)
