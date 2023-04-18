@@ -9,10 +9,10 @@ const SignUp = () => {
     const [phone, setPhone] = useState("");
     const [checkPassword,setCheckPassword]=useState("");
     //const checkPassword = document.getElementById("checkPassword").value;
-    const signUp = async () => {
+    const signUp = async (role) => {
         if (!password == checkPassword)
             alert("wrong password")
-        const user = JSON.stringify({ email, iduser: "empty", name: firstName + " " + lastName, phone, password })
+        const user = JSON.stringify({ email, iduser: "empty", name: firstName + " " + lastName, phone, password,role })
         debugger;
         const response = await fetch("http://localhost:5000/logIn",
             {
@@ -21,7 +21,7 @@ const SignUp = () => {
                 body: user
             })
             if(response.ok)
-                alert("user added");
+                alert(`${role} added`);
             else
                 alert("can't add user");
         console.log(response);
