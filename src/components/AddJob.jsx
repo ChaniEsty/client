@@ -4,7 +4,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 function AddJob(){
-    
+    const load=()=>{
+      
+    }
     return(<><h2>פרטי משרה</h2>
     <input type="text" placeholder="תחום"></input>
     <input type="text" placeholder="מקצוע"></input>
@@ -26,7 +28,7 @@ function AddJob(){
       placeholder="דרישות"
       style={{ width: 200 }}
     />
- {/* <button className="button" onClick={}>חיפוש</button> */}
+ <button className="button" onClick={load}>חיפוש</button>
   
 
     </>)
