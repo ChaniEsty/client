@@ -3,7 +3,7 @@ import SearchDetails from "./SearchDetails";
 const Home=()=>{
     return (
         <>
-        <h1>hello</h1>
+        
         <SearchDetails></SearchDetails>
             
         </>);

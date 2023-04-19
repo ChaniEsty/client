@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from "@material-ui/core/TextField";
+import {TextField,Box,Autocomplete} from "@mui/material";
     
 const SearchDetails=()=>{
     const [field, setField]=useState("");
@@ -50,10 +49,11 @@ const SearchDetails=()=>{
         getCities();
     }
     useEffect(() => { getOptions() }, [])
-    return<>
-    <Autocomplete
+    return(
+    <Box sx={{display:"flex"}}>
+            <Autocomplete
                 id="field"
-                style={{ width: 300 }}
+                style={{ width: 250 }}
                 options={nameFields}
                 multiple
                 renderInput={(params) => (
@@ -68,7 +68,7 @@ const SearchDetails=()=>{
             />
             <Autocomplete
                 id="subject"
-                style={{ width: 300 }}
+                style={{ width: 250 }}
                 options={nameSubjects}
                 getOptionLabel={option => option}
                 multiple
@@ -84,7 +84,7 @@ const SearchDetails=()=>{
             />
             <Autocomplete
                 id="city"
-                style={{ width: 300 }}
+                style={{ width: 250 }}
                 options={nameCities}
                 getOptionLabel={option => option}
                 multiple
@@ -100,7 +100,7 @@ const SearchDetails=()=>{
     // renderInput={params => (
     //     <TextField {...params} label="Label" variant="outlined" fullWidth />
     // )}
-/>
+                />
                 {/* onBlur={(event,value)=>{setCity(value)}}
             /> */}
 
@@ -113,6 +113,6 @@ const SearchDetails=()=>{
     
     
     
-    </>
+    </Box>)
 }
 export default SearchDetails;

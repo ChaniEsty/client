@@ -2,6 +2,7 @@ import Job from "./Job";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import makeListJobs from "./listJobs";
+import ListJobs from "./listJobs";
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const { search } = useLocation();
@@ -16,17 +17,20 @@ const Jobs = () => {
             })
         const jobList = await response.json();
         //jobs.map((job) => { <Job job={job}></Job> });
-       return await makeListJobs(jobList);
+      // return await makeListJobs(jobList);
+      setJobs(jobList); 
     }
-    
-    useEffect(async() => {
-        const jobMapped=await getJobs();
-        setJobs(jobMapped);
-     }, [])
+    useEffect(() => { getJobs() }, [])
+
+    // useEffect(async() => {
+    //     const jobMapped=await getJobs();
+    //     setJobs(jobMapped);
+    //  }, [])
     // useEffect(async() => { await makeListJobs() }, [])
-    return (<>
-        <div>{jobs}</div>
-    </>)
+    return (<ListJobs jobs={jobs}/>
+      
+   
+    )
 }
 export default Jobs;
 // 1 גישה לסרבר לקבל משרות
