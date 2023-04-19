@@ -11,11 +11,13 @@ const Jobs = () => {
     const subjects = query.get("subject");
     const cities = query.get("city");
     const getJobs = async () => {
+        console.log(fields,subjects,cities);
         const response = await fetch(`http://localhost:5000/job?fields=${fields}&subjects=${subjects}&cities=${cities}`,
             {
                 method: 'GET',
             })
         const jobList = await response.json();
+        console.log(jobList);
         //jobs.map((job) => { <Job job={job}></Job> });
       // return await makeListJobs(jobList);
       setJobs(jobList); 
