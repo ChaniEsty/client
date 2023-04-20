@@ -1,8 +1,9 @@
 import Job from "./Job";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
-import makeListJobs from "./listJobs";
 import ListJobs from "./listJobs";
+import axios from "axios";
+
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const { search } = useLocation();
@@ -10,6 +11,16 @@ const Jobs = () => {
     const fields = query.get("field");
     const subjects = query.get("subject");
     const cities = query.get("city");
+    const handlesave=async()=>{
+
+        // jobs.map(async(job)=>{
+        //     const response = await axios.post (`http://localhost:5000/user/e@g.com/job`,job)
+        // })
+        const idJobs= jobs.map(async job=>job.idJob)
+        const response = await axios.post (`http://localhost:5000/user/e@g.com/job?${field}`,idJobs)//field=${field}&subject=${subject}&city=${city}
+
+        
+    }
     const getJobs = async () => {
         console.log(fields,subjects,cities);
         const response = await fetch(`http://localhost:5000/job?fields=${fields}&subjects=${subjects}&cities=${cities}`,
@@ -29,7 +40,10 @@ const Jobs = () => {
     //     setJobs(jobMapped);
     //  }, [])
     // useEffect(async() => { await makeListJobs() }, [])
-    return (<ListJobs jobs={jobs}/>
+    return (<>
+        <ListJobs jobs={jobs}/>    
+        <button onClick={handlesave}>שמירה</button>
+    </>
       
    
     )

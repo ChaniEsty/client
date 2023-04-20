@@ -6,12 +6,13 @@ import { useEffect,useState } from "react";
 import Job from "./Jobs/Job";
 const PersonalArea=()=>{
     const [jobs,setJobs]=useState([]);
-    const handlesave=()=>{
-        jobs.map(async(job)=>{
-            const response = await axios.post (`http://localhost:5000/user/e@g.com/job`,job)
-        })
+    // const handlesave=()=>{
+
+    //     jobs.map(async(job)=>{
+    //         const response = await axios.post (`http://localhost:5000/user/e@g.com/job`,job)
+    //     })
         
-    }
+    // }
     const getDetailes=async()=>{
         const userId=sessionStorage.getItem("userId");
        // const response = await axios.get (`http://localhost:5000/job/${userId}`)
@@ -28,7 +29,7 @@ const PersonalArea=()=>{
     <div>{async()=>await makeListJobs(jobs)}</div>
     <SearchDetails></SearchDetails>
     <Job job="fgsh"></Job>
-    <button onClick={handlesave}>שמירה</button>
+    {/* <button onClick={handlesave}>שמירה</button> */}
     </>
 }
 export default PersonalArea

@@ -11,7 +11,7 @@ const SignUp = () => {
     //const checkPassword = document.getElementById("checkPassword").value;
     const signUp = async (role) => {
         if (!password == checkPassword)
-            alert("wrong password")
+            alert("סיסמא שגויה")
         const user = JSON.stringify({ email, iduser: "empty", name: firstName + " " + lastName, phone, password,role })
         debugger;
         const response = await fetch("http://localhost:5000/logIn",
@@ -21,7 +21,7 @@ const SignUp = () => {
                 body: user
             })
             if(response.ok)
-                alert(`${role} added`);
+                alert(` נוסף ${role} `);
             else
                 alert(`can't add ${role}`);
         console.log(response);
