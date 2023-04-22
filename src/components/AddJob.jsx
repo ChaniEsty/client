@@ -26,7 +26,7 @@ function AddJob(){
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem("acssesToken")
       }
-  }
+    }
   console.log(sessionStorage.getItem("acssesToken"))
     const response = await axios.post ("http://localhost:5000/job", job,config)
     console.log(response.status)

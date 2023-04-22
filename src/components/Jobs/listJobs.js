@@ -1,4 +1,4 @@
 import Job from "./Job";
-const ListJobs =  (props) => <>{props.jobs.map((job) => <Job  job={job}/>)}</>
+const ListJobs =  ({jobs}) => <>{alert("1",jobs) }</>
  
  export default ListJobs;

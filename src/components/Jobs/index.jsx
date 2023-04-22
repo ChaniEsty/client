@@ -1,4 +1,3 @@
-import Job from "./Job";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import ListJobs from "./listJobs";
@@ -16,9 +15,13 @@ const Jobs = () => {
         // jobs.map(async(job)=>{
         //     const response = await axios.post (`http://localhost:5000/user/e@g.com/job`,job)
         // })
-        const idJobs= jobs.map(async job=>job.idJob)
-        const response = await axios.post (`http://localhost:5000/user/e@g.com/job?${field}`,idJobs)//field=${field}&subject=${subject}&city=${city}
-
+        // const idJobs= jobs.map(async job=>job.idJob)
+        const config = {
+            headers: {
+              'Authorization': 'Bearer ' + sessionStorage.getItem("acssesToken")
+            }
+          }
+        await axios.post (`http://localhost:5000/user/e@g.com/job?field=${fields}&subject=${subjects}&city=${cities}`,config)
         
     }
     const getJobs = async () => {
