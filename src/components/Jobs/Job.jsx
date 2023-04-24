@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import { Modal } from "@mui/material";
 const Job=(props)=>{
     const[openModal, setOpenModal]=useState(false);
-    
+    alert(props.job.name);
     return (
         <>
         <div>

@@ -4,7 +4,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import axios from "axios";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
 import { json } from 'react-router-dom';
 
 function AddJob(){
@@ -17,6 +19,8 @@ function AddJob(){
     const [quick, setQuick] = useState(false);
     const [description, setDescription] = useState("");
     const [requirements,setRequirements]=useState("");
+    const {token} = useContext(AuthContext)
+
   const handleSave=async()=>{
     const neededCharacters=JSON.stringify({clever,talented,quick});
     const description_req=JSON.stringify({description,requirements});
@@ -24,10 +28,10 @@ function AddJob(){
     console.log(description_req,requirements,neededCharacters,"save")
     const config = {
       headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem("acssesToken")
+        'Authorization': 'Bearer ' + token
       }
     }
-  console.log(sessionStorage.getItem("acssesToken"))
+  console.log(token)
     const response = await axios.post ("http://localhost:5000/job", job,config)
     console.log(response.status)
     if (response.status==201){ 

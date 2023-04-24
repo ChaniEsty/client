@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from "react-router-dom";
 import ListJobs from "./listJobs";
 import axios from "axios";
+import { AuthContext } from "../../context/authContext";
+
 
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -10,6 +12,8 @@ const Jobs = () => {
     const fields = query.get("field");
     const subjects = query.get("subject");
     const cities = query.get("city");
+    const {token}=useContext(AuthContext);
+    const {currentUser} =useContext(AuthContext);
     const handlesave=async()=>{
 
         // jobs.map(async(job)=>{
@@ -18,10 +22,13 @@ const Jobs = () => {
         // const idJobs= jobs.map(async job=>job.idJob)
         const config = {
             headers: {
-              'Authorization': 'Bearer ' + sessionStorage.getItem("acssesToken")
+              'Authorization': 'Bearer ' + token
             }
           }
-        await axios.post (`http://localhost:5000/user/e@g.com/job?field=${fields}&subject=${subjects}&city=${cities}`,config)
+          alert(currentUser);
+          const userId=currentUser.email;
+          alert(userId)
+        await axios.post (`http://localhost:5000/user/${userId}/job?field=${fields}&subject=${subjects}&city=${cities}`,config)
         
     }
     const getJobs = async () => {

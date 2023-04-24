@@ -1,34 +1,37 @@
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import React from "react";
 import { NavLink } from "react-router-dom"
+import { AuthContext } from "../context/authContext";
+
 import SignUp from "./SignUp";
 import axios from "axios"
 const SignIn = () => {
     const [signInEmail, setSignInEmail] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
-    const signIn = async () => {
-        // debugger;
-         const user = JSON.stringify({ signInEmail, signInPassword });
-        console.log("signin")
-        const response = await axios.post ("http://localhost:5000/logIn/signIn",{ signInEmail, signInPassword })
-        console.log(response.data.accessToken)  
-        // const response = await fetch("http://localhost:5000/logIn/signIn",
-        //     {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: user
-        //     })
-        // debugger;
-        if (response.statusText=="OK"){ 
-        // if (response.ok) {
-            const acssesToken = response.data.accessToken;
-            alert("logged in");
-            sessionStorage.setItem("acssesToken", acssesToken);
-            alert(acssesToken);
-        }
-        else
-            alert("not found");
-    }
+    const {signIn} = useContext(AuthContext);
+    // const signIn = async () => {
+    //     // debugger;
+    //      const user = JSON.stringify({ signInEmail, signInPassword });
+    //     console.log("signin")
+    //     const response = await axios.post ("http://localhost:5000/logIn/signIn",{ signInEmail, signInPassword })
+    //     console.log(response.data.accessToken)  
+    //     // const response = await fetch("http://localhost:5000/logIn/signIn",
+    //     //     {
+    //     //         method: 'POST',
+    //     //         headers: { 'Content-Type': 'application/json' },
+    //     //         body: user
+    //     //     })
+    //     // debugger;
+    //     if (response.statusText=="OK"){ 
+    //     // if (response.ok) {
+    //         const acssesToken = response.data.accessToken;
+    //         alert("logged in");
+    //         sessionStorage.setItem("acssesToken", acssesToken);
+    //         alert(acssesToken);
+    //     }
+    //     else
+    //         alert("not found");
+    // }
 
     const newPassword = async () => {
         //const stringSignInEmail=JSON.stringify({ signInEmail })
@@ -82,7 +85,7 @@ const SignIn = () => {
                         <br></br>
                         {/* <!--        buttons --> */}
                         {/* <!--      button LogIn --> */}
-                        <button className="button" type="button" onClick={()=>{ signIn()}}> Log In </button>
+                        <button className="button" type="button" onClick={()=>{ signIn(signInEmail,signInPassword)}}> Log In </button>
                     </div>
                     {/* <!--   other buttons --> */}
                     <div className="other">
