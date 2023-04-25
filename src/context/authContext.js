@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,8 @@ export const AuthContextProvider = ({ children }) => {
     const [token, setToken] = useState(
         sessionStorage.getItem("token") || null
     );
+    // const navigate = useNavigate()
+
     //signInEmail,signInPassword
     const signIn = async (signInEmail, signInPassword) => {
         console.log(signInEmail,signInPassword);
@@ -25,6 +28,7 @@ export const AuthContextProvider = ({ children }) => {
             alert(JSON.stringify(res.data.user))
             setCurrentUser(res.data.user);
             setToken(res.data.accessToken);
+            // navigate("/personalArea")
         }
 
         else

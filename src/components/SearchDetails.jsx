@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import {TextField,Box,Autocomplete} from "@mui/material";
-    
+import { Link, useNavigate } from "react-router-dom"
+
 const SearchDetails=()=>{
     const [field, setField]=useState("");
     const [subject, setSubject]=useState("");
@@ -9,11 +10,10 @@ const SearchDetails=()=>{
     const [nameFields, setNameFields] = useState([]);
     const [nameSubjects, setNameSubjects] = useState([]);
     const [nameCities, setNameCities] = useState([]);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSearch = () => {
-        // navigate("jobs");
-        window.location.href = `jobs?field=${field}&subject=${subject}&city=${city}`;
+        navigate(`/jobs?field=${field}&subject=${subject}&city=${city}`);
     }
     const getFields = async () => {
         const response = await fetch("http://localhost:5000/field",
