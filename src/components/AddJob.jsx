@@ -24,7 +24,7 @@ function AddJob(){
   const handleSave=async()=>{
     const neededCharacters=JSON.stringify({clever,talented,quick});
     const description_req=JSON.stringify({description,requirements});
-    const job={name:"empty",genralDescription:description_req,field,subject,city,neededCharacters,company};
+    const job={name:"empty",generalDescription:description_req,field,subject,city,neededCharacters,company};
     console.log(description_req,requirements,neededCharacters,"save")
     const config = {
       headers: {

@@ -12,8 +12,8 @@ const PersonalArea=()=>{
     const getDetailes=async()=>{
         const userId=currentUser.email;
         const response = await axios.get (`http://localhost:5000/job/${userId}`)
-        //const response = await axios.get (`http://localhost:5000/job/e@.com`)
         alert(response+"amazing")
+        console.log(response.data,"inp");
         setJobs(response.data);
     }
     useEffect(() => { getDetailes() }, [])
