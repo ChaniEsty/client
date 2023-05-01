@@ -6,6 +6,7 @@ import SignIn from "./components/SignIn";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import "./App.css";
+import "./components/Jobs/job.css"
 import "./components/style.css"
 import AddJob from "./components/AddJob";
 import PersonalArea from "./components/PersonalArea";

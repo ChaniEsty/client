@@ -25,9 +25,7 @@ const Jobs = () => {
               'Authorization': 'Bearer ' + token
             }
           }
-          alert(currentUser);
           const userId=currentUser.email;
-          alert(userId)
         await axios.post (`http://localhost:5000/user/${userId}/job?field=${fields}&subject=${subjects}&city=${cities}`,config)
         
     }
@@ -38,7 +36,6 @@ const Jobs = () => {
                 method: 'GET',
             })
         const jobList = await response.json();
-        console.log(jobList);
         //jobs.map((job) => { <Job job={job}></Job> });
       // return await makeListJobs(jobList);
       setJobs(jobList); 
