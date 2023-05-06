@@ -20,7 +20,7 @@ const Footer = () => {
           <NavLink to="/inqueries"><img src="public\images\‏‏צרו קשר.PNG"></img>צרו קשר</NavLink>
         </nav> */}
         <Box sx={{
-            justifyContent: "center", gap: "5%", position: "fixed", alignContent: "center", bottom: 0, width: "100%", display: "flex", marginBottom: "5%", backgroundColor: "5f5d5d"
+            justifyContent: "center", gap: "5%", position: "relative", alignContent: "center", bottom: 0, width: "100%", display: "flex", marginBottom: "5%", backgroundColor: "5f5d5d"
         }}>
                 <div style={{backgroundColor:"#5f5d5d"}}>
                     <h6>חברת השמה-ITeck</h6>
