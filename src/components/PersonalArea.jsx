@@ -14,7 +14,6 @@ const PersonalArea=()=>{
         const userId=currentUser.email;
         const response = await axios.get (`http://localhost:5000/job/${userId}`);
         console.log(response,"inp");
-        // alert(currentUser.name)
         if(response.data!="no jobs")
             setJobs(response.data.jobs);
     }

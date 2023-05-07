@@ -6,7 +6,7 @@ const Uploader = () => {
     if(selectFile){
         const formData = new FormData()
         formData.append("file", selectFile)
-        axios.post("http://localhost:3600/api/upload",formData)
+        axios.post("http://localhost:5000/upload",formData)
     }
 
   }, [selectFile])
@@ -18,8 +18,9 @@ const Uploader = () => {
   }
   return (
     <>
+    <div >
     <label htmlFor="file"> העלאת קובץ </label>
-    <input type="file" onChange={onSelectFile} name="file" />
+    <input type="file" onChange={onSelectFile} name="file" /></div>
     </>
   )
 }

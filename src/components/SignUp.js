@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { Typography } from '@mui/material';import "./signUp.css"
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -27,15 +29,15 @@ const SignUp = () => {
         console.log(response);
     }
     return (
-        <div><label>?עדיין לא נרשמת</label><br></br>
-            <input type="text" onChange={(e) => setLastName(e.target.value)} placeholder="שם משפחה" />
-            <input type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="שם פרטי" /><br></br>
-            <input type="text" onChange={(e) => setPhone(e.target.value)} placeholder="טלפון" />
-            <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder='דוא"ל' /><br></br>
-            <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-            <input type="password" onChange={(e) => setCheckPassword(e.target.value)} placeholder="אימות סיסמא" /><br></br>
-            <button onClick={()=>{signUp("מעסיק")}}>מעסיק</button>
-            <button onClick={()=>{signUp("מחפש תעסוקה")}}>מחפש תעסוקה</button></div>
+        <div className="signUp"><Typography variant="h5">עדיין לא נרשמת?</Typography><br></br>
+        <InputText onChange={(e) => setLastName(e.target.value)} placeholder="שם משפחה" />
+        <InputText onChange={(e) => setFirstName(e.target.value)} placeholder="שם פרטי" /><br></br>
+        <InputText onChange={(e) => setPhone(e.target.value)} placeholder="טלפון" />
+        <InputText type="email" onChange={(e) => setEmail(e.target.value)} placeholder='דוא"ל' /><br></br>
+        <InputText type="password" onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
+        <InputText type="password" onChange={(e) => setCheckPassword(e.target.value)} placeholder="אימות סיסמא" /><br></br>
+        <Button className="button" onClick={()=>{signUp("מעסיק")}}>מעסיק</Button>
+        <Button className="button" onClick={()=>{signUp("מחפש תעסוקה")}}>מחפש תעסוקה</Button></div>
     )
 }
 

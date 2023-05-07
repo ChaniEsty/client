@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import {TextField,Box,Autocomplete} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom"
+import { TextField, Box, Autocomplete,Button } from "@mui/material";
+import { useNavigate } from "react-router-dom"
 
-const SearchDetails=()=>{
-    const [field, setField]=useState("");
-    const [subject, setSubject]=useState("");
-    const [city, setCity]=useState("");
+const SearchDetails = () => {
+    const [field, setField] = useState("");
+    const [subject, setSubject] = useState("");
+    const [city, setCity] = useState("");
     const [nameFields, setNameFields] = useState([]);
     const [nameSubjects, setNameSubjects] = useState([]);
     const [nameCities, setNameCities] = useState([]);
@@ -49,8 +49,8 @@ const SearchDetails=()=>{
         getCities();
     }
     useEffect(() => { getOptions() }, [])
-    return(
-    <Box sx={{display:"flex",marginRight:"20%",marginLeft:"20%"}}>
+    return (
+        <Box sx={{ display: "flex", marginRight: "30%", marginLeft: "20%" }}>
             <Autocomplete
                 id="field"
                 style={{ width: 250 }}
@@ -64,7 +64,6 @@ const SearchDetails=()=>{
                     />
                 )}
                 onChange={(event, value) => setField(value)}
-                // onInputChange={(e)=>{setField(e.inputValue)}}
             />
             <Autocomplete
                 id="subject"
@@ -80,7 +79,6 @@ const SearchDetails=()=>{
                     />
                 )}
                 onChange={(event, value) => setSubject(value)}
-                // onBlur={(e)=>{setSubject(e.inputValue)}}
             />
             <Autocomplete
                 id="city"
@@ -95,24 +93,16 @@ const SearchDetails=()=>{
                         variant="outlined"
                     />
                 )}
-                
-               onChange={(event, value) => setCity(value)} // prints the selected value
-    // renderInput={params => (
-    //     <TextField {...params} label="Label" variant="outlined" fullWidth />
-    // )}
-                />
-                {/* onBlur={(event,value)=>{setCity(value)}}
-            /> */}
 
-            {/* <Autocomplete label="תחום" onSelect={e => setField(e.value)} />
-            <Autocomplete label="תחום" onSelect={e => setField(e.value)} />  */}
+                onChange={(event, value) => setCity(value)} // prints the selected value
 
-            <button onClick={handleSearch}>חיפוש</button>
-    
-    
-    
-    
-    
-    </Box>)
+            />
+            <Button className="button" onClick={handleSearch}>חיפוש</Button>
+
+
+
+
+
+        </Box>)
 }
 export default SearchDetails;
