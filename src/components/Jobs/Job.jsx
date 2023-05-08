@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import React from "react";
 import SendCVModal from "./SendCVModel";
-import {Card,Button} from '@mui/material';
+import {Card} from '@mui/material';
+import { Button } from 'primereact/button';
+
 
 //  import "./job.css"
 const Job = (props) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-    {console.log(props.job.employerId)}
-      <Card variant="outlined" sx={{ width: "50%", backgroundColor: "aqua", marginRight:"25%", textAlign:"center"}}>{<><div className="job">
+      <Card variant="outlined" sx={{ width: "40%", backgroundColor: "aqua", marginRight:"30%", textAlign:"center", padding:"2%"}}>{<><div className="job">
         <h4>{props.job.name}</h4>
-        <span>{props.job.genralDescription}</span><br></br>
+        <span>תיאור:{props.job.generalDescription}</span><br></br>
+        <span>דרישות:{props.job.requirements}</span><br></br>
         <span>עיר:{props.job.city.name}</span><br></br>
         <span>תחום:{props.job.field.name}</span><br></br>
         <span>מקצוע:{props.job.subject.name}</span><br></br>

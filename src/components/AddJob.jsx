@@ -18,15 +18,15 @@ function AddJob(){
     const [clever, setClever] = useState(false);
     const [talented, setTalented] = useState(false);
     const [quick, setQuick] = useState(false);
-    const [description, setDescription] = useState("");
+    const [generalDescription, setDescription] = useState("");
     const [requirements,setRequirements]=useState("");
     const {token} = useContext(AuthContext)
 
   const handleSave=async()=>{
     const neededCharacters=JSON.stringify({clever,talented,quick});
-    const description_req=JSON.stringify({description,requirements});
-    const job={name,generalDescription:description_req,field,subject,city,neededCharacters,company};
-    console.log(description_req,requirements,neededCharacters,"save")
+    console.log(generalDescription+"88888888888888888888888888")
+    const job={name,generalDescription,requirements,field,subject,city,neededCharacters,company};
+    console.log(requirements,neededCharacters,"save")
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
@@ -51,14 +51,14 @@ function AddJob(){
     </FormGroup>
     <TextareaAutosize
       aria-label="minimum height"
-      minRows={3}
+      minRows={5}
       onChange={(e) => setDescription(e.target.value)}
       placeholder="תיאור כללי"
       style={{ width: 200 }}
     />
     <TextareaAutosize
       aria-label="minimum height"
-      minRows={3}
+      minRows={5}
       onChange={(e) => setRequirements(e.target.value)}
       placeholder="דרישות"
       style={{ width: 200 }}

@@ -1,29 +1,27 @@
 
-import React from "react"
-import { NavLink } from "react-router-dom";
-const Header = () => {
+// import React from "react"
+// import { NavLink } from "react-router-dom";
+// const Header = () => {
     
     
-    return (
-        <>
-        {/* <label>שלום, "+אורח"</label> */}
-        {/* <nav className='main-nav'>
-          <NavLink to="/"><img src="public\images\‏‏דף הבית.PNG"></img>דף הבית</NavLink>
-          <NavLink to="/login"><img src="public\images\‏‏התחברות.PNG"></img>התחברות</NavLink>
-          <NavLink to="/private"><img src="public\images\‏‏לכידה.PNG"></img>אזור אישי </NavLink>
-          <NavLink to="/jobs"><img src="public\images\‏‏משרות.PNG"></img>משרות </NavLink>
-          <NavLink to="/gettingEmployees"><img src="public\images\‏‏מגייסים עובדים.PNG"></img>מגייסים עובדים</NavLink>
-          <NavLink to="/inqueries"><img src="public\images\‏‏צרו קשר.PNG"></img>צרו קשר</NavLink>
-        </nav> */}
-         {/* <label>שלום, "+אורח"</label> */}
-         {/* <link ><img src="public\images\‏‏לכידה.PNG"></img>אזור אישי</link> */}
-         {/* <link href="src\components\SignIn.js"><img src="public\images\‏‏התחברות.PNG"></img>התחברות</link> */}
-         {/* <link><img src="public\images\‏‏דף הבית.PNG"></img>דף הבית</link> */}
-         {/* <link><img src="public\images\‏‏משרות.PNG"></img>משרות</link> */}
-         {/* <link><img src="public\images\‏‏מגייסים עובדים.PNG"></img>מגייסים עובדים</link> */}
-         {/* <link><img src="public\images\‏‏צרו קשר.PNG"></img>צרו קשר</link> */}
-         {/* <a></a> */}
-        </>
-    )
-}
-export default Header;
+//     return (
+//       //   <>
+//       //   <nav className='main-nav'>
+//       //   <label>שלום, "+אורח"</label>
+//       //   {/* <img src="\images\דף הבית.png"></img> */}
+//       //   {/* <img src="\images\‏‏התחברות.PNG"></img> */}
+//       //   {/* <img src="\images\‏‏לכידה.PNG"></img> */}
+//       //   {/* <img src="\images\משרות.png"></img> */}
+//       //   {/* <img src="\images\מגייסים עובדים.png"></img> */}
+//       //   {/* <img src="\images\‏‏צרו קשר.PNG"></img> */}
+//       //   <NavLink to="/">דף הבית</NavLink>
+//       //   <NavLink to="/signIn">התחברות</NavLink>
+//       //   <NavLink to="/personalArea">אזור אישי </NavLink>
+//       //   <NavLink to="/jobs">משרות </NavLink>
+//       //   <NavLink to="/gettingEmployees">מגייסים עובדים</NavLink>
+//       //   <NavLink to="/inqueries">צרו קשר</NavLink>
+//       // </nav>
+//       //   </>
+//     )
+// }
+// export default Header;

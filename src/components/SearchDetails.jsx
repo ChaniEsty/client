@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { TextField, Box, Autocomplete,Button } from "@mui/material";
+import { TextField, Box, Autocomplete } from "@mui/material";
+import { Button } from 'primereact/button';
 import { useNavigate } from "react-router-dom"
 
 const SearchDetails = () => {
@@ -98,11 +99,6 @@ const SearchDetails = () => {
 
             />
             <Button className="button" onClick={handleSearch}>חיפוש</Button>
-
-
-
-
-
         </Box>)
 }
 export default SearchDetails;

@@ -4,13 +4,12 @@ import axios from "axios";
 import ListJobs from "./Jobs/listJobs";
 import { useEffect,useState } from "react";
 import { AuthContext } from "../context/authContext";
-import { textAlign } from "@mui/system";
+import { Typography } from "@mui/material";
 
 const PersonalArea=()=>{
     const [jobs,setJobs]=useState([]);
     const {currentUser}=useContext(AuthContext);
     const getDetailes=async()=>{
-        debugger;
         const userId=currentUser.email;
         const response = await axios.get (`http://localhost:5000/job/${userId}`);
         console.log(response,"inp");
@@ -21,8 +20,8 @@ const PersonalArea=()=>{
 
     return<>
     <h1 style={{textAlign:"center"}}>שלום ל{ currentUser?currentUser.name:"אורח"}</h1>
-    <div>{ <ListJobs jobs={jobs}></ListJobs>}</div><br></br>
-    <SearchDetails></SearchDetails>
+    { (currentUser.role=="employee")?<> <Typography sx={{textAlign:"center"}} variant="h6">רשימת המשרות המותאמות לך: </Typography><div>{ <ListJobs jobs={jobs}></ListJobs>}</div><br></br><SearchDetails></SearchDetails></>:<></>}
+    
     </>
 }
 export default PersonalArea

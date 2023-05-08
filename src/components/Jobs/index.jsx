@@ -14,15 +14,14 @@ const Jobs = () => {
   const subjects = query.get("subject");
   const cities = query.get("city");
   const { token } = useContext(AuthContext);
-  const { currentUser } = useContext(AuthContext);
+  //const { currentUser } = useContext(AuthContext);
   const handlesave = async () => {
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
       }
     }
-    const userId = currentUser.email;
-    await axios.post(`http://localhost:5000/user/${userId}/job?field=${fields}&subject=${subjects}&city=${cities}`, config)
+    await axios.get(`http://localhost:5000/user/job?field=${fields}&subject=${subjects}&city=${cities}`, config)
 
   }
   const getJobs = async () => {
@@ -36,8 +35,8 @@ const Jobs = () => {
   }
   useEffect(() => { getJobs() }, [])
   return (<>
-    <ListJobs jobs={jobs} />
-    <Button className="button" onClick={handlesave}>שמירה</Button>
+    <ListJobs  jobs={jobs} />
+    <Button style={{marginRight:"47.5%"}} className="button" onClick={handlesave}>שמירה</Button>
   </>
   )
 }

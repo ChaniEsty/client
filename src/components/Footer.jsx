@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { Box, Container, Paper } from "@mui/material"
 import { Link,NavLink, useNavigate } from "react-router-dom"
 import { Router } from "react-router-dom"
+import { Typography } from '@mui/material';
+import { fontSize } from "@mui/system";
 
 
 const Footer = () => {
@@ -10,30 +12,29 @@ const Footer = () => {
     return (
         <>
         <Box sx={{
-            justifyContent: "center", gap: "1%", position: "fixed", alignContent: "center", bottom: 0, width: "100%", display: "flex", marginBottom: "5%", backgroundColor: "5f5d5d"
+            justifyContent: "center", gap: "1%", position: "relative", alignContent: "center", bottom:"0", width: "100%", display: "flex",marginBottom:"5%"
         }}>
      
-                <div style={{backgroundColor:"#5f5d5d",width:"20%",textAlign:"center"}}>
-                    <h6>חברת השמה-ITeck</h6>
-                   
-                    <label> דף הבית</label><br></br>
-                    <label>אודות החברה</label><br></br>
-                    <label>מחפשים עבודה</label><br></br>
-                    <label>מגייסים עובדים</label><br></br>
-                    <label>צרו קשר</label>
+                <div style={{backgroundColor:"black",width:"20%",textAlign:"center"}}>
+                <h6 style={{fontFamily:'sans-serif',color:"white",fontSize:"22"}} >חברת השמה-<img style={{width:"70px",padding:"1%"}} src="\images\logo.png"></img></h6>
+                <NavLink to="/" style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}> דף הבית</NavLink><br></br><br></br>
+                <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>אודות החברה</NavLink><br></br><br></br>
+                <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>מחפשים עבודה</NavLink><br></br><br></br>
+                <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}} to="/gettingEmployees">מגייסים עובדים</NavLink><br></br><br></br>
+                <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}} to="/inqueries">צרו קשר</NavLink>
                 </div>
-                <div style={{backgroundColor:"#5f5d5d",width:"20%",textAlign:"center"}}>
+                <div style={{backgroundColor:"black",width:"20%",textAlign:"center"}}>
                     <h6>תפקידים מבוקשים</h6>
-                    <label>מתכנת php</label><br></br>
-                    <label>מהנדס תוכנה</label><br></br>
-                    <label>Data scientist</label><br></br>
-                    <label>Java developer</label>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>מתכנת php</NavLink><br></br><br></br>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>מהנדס תוכנה</NavLink><br></br><br></br>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>Data scientist</NavLink><br></br><br></br>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>Java developer</NavLink>
                 </div>
-                <div style={{backgroundColor:"#5f5d5d",width:"20%",textAlign:"center"}} >
+                <div style={{backgroundColor:"black",width:"20%",textAlign:"center"}} >
                     <h6>מאמרים מובילים</h6>
-                    <label>7 סיבות לפנות לחברת השמה</label><br></br>
-                    <label>6 דרכים למציאת עבודה בהייטק</label><br></br>
-                    <label>סימנים שהגיע זמן להחליף עבודה</label>
-                </div></Box></> 
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>7 סיבות לפנות לחברת השמה</NavLink><br></br><br></br>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>6 דרכים למציאת עבודה בהייטק</NavLink><br></br><br></br>
+                    <NavLink style={{textDecoration:'none' ,color:'white' ,fontFamily:'sans-serif'}}>סימנים שהגיע זמן להחליף עבודה</NavLink>
+                </div></Box>  </> 
     )}
 export default Footer
