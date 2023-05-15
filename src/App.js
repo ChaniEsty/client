@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import SignUp from "./components/SignUp";
@@ -13,17 +13,18 @@ import PersonalArea from "./components/PersonalArea";
 import { AuthContextProvider } from "./context/authContext";
 import { Box, Container, Paper } from "@mui/material"
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { color } from "@mui/system";
 // import "./signUp.css"
 
 
 function App() {
-  return (<>
+    return (<>
   
     <AuthContextProvider>
       <Router>
       <nav className='main-nav'>
-        <label>שלום, "+אורח"</label>
+        <label style={{color:'white',marginBottom:'7px',fontSize:'20px'}}>אורח<AccountCircleIcon sx={{marginBottom:'-7px'}} ></AccountCircleIcon></label>
         {/* <img src="\images\דף הבית.png"></img> */}
         {/* <img src="\images\‏‏התחברות.PNG"></img> */}
         {/* <img src="\images\‏‏לכידה.PNG"></img> */}
