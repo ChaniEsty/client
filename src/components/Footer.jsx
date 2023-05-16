@@ -12,7 +12,7 @@ const Footer = () => {
     return (
         <>
         <Box sx={{
-            justifyContent: "center", gap: "1%", position: "relative", alignContent: "center", bottom:"0", width: "100%", display: "flex",marginBottom:"5%"
+             justifyContent: "center", gap: 1, alignContent: "center", bottom:"0", width: "100%", display: "flex",
         }}>
      
                 <div style={{backgroundColor:"black",width:"20%",textAlign:"center"}}>

@@ -38,7 +38,9 @@ function App() {
         <NavLink to="/inqueries">צרו קשר</NavLink>
         <img style={{width:"100px"}} src="\images\logo.png"></img>
       </nav>
-       
+             <Box sx={{display:"flex", flexDirection:"column", flexGrow:1, minHeight:"100vh", justifyContent:"space-between"}}>
+  
+
        
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
@@ -48,7 +50,9 @@ function App() {
           <Route path="gettingEmployees" element={<AddJob></AddJob>}></Route>
           <Route path="personalArea" element={<PersonalArea></PersonalArea>}></Route>
         </Routes>
-        <Footer></Footer>
+        <Box >
+        <Footer/></Box>
+        </Box>
       </Router>
     </AuthContextProvider>
     </>
