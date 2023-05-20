@@ -10,7 +10,7 @@ const Job = (props) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-      <Card variant="outlined" sx={{ width: "40%", backgroundColor: "aqua", marginRight:"30%", textAlign:"center", padding:"2%"}}>{<><div className="job">
+      <Card variant="outlined" sx={{ width: "40%", backgroundColor: "#10acb5", marginRight:"30%", textAlign:"center", padding:"2%"}}>{<><div className="job">
         <h4>{props.job.name}</h4>
         <span>תיאור:{props.job.generalDescription}</span><br></br>
         <span>דרישות:{props.job.requirements}</span><br></br>
