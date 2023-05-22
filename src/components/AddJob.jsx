@@ -1,13 +1,15 @@
 import * as React from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import {Checkbox,Box} from '@mui/material';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import axios from "axios";
 import { useState,useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { InputText} from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { TextField } from '@mui/material';
+import { Label } from '@mui/icons-material';
 
 function AddJob(){
     const [company, setCompany] = useState("");
@@ -38,34 +40,36 @@ function AddJob(){
     if (response.status==201){ 
           alert("job saved");}
   }
-    return(<><h2>פרטי משרה</h2>
-    <InputText type="text" onChange={(e) => setCompany(e.target.value)} placeholder="חברה"></InputText>
-    <InputText type="text" onChange={(e) => setName(e.target.value)} placeholder="שם"></InputText>
-    <InputText type="text" onChange={(e) => setField(e.target.value)} placeholder="תחום"></InputText>
-    <InputText type="text" onChange={(e) => setSubject(e.target.value)} placeholder="מקצוע"></InputText>
-    <InputText type="text" onChange={(e) => setCity(e.target.value)} placeholder="עיר"></InputText>
-    <FormGroup>
+    return(<>
+    
+    <Box sx={{width:'50%',gap:"50%", paddingTop:'2%',paddingRight: '40%'}}>
+    <h2>פרטי משרה</h2>
+    <div className="p-float-label"><InputText type="text" onChange={(e) => setCompany(e.target.value)} ></InputText> <label htmlFor="name" >חברה</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText type="text" onChange={(e) => setName(e.target.value)} ></InputText><label htmlFor="name" >שם</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText type="text" onChange={(e) => setField(e.target.value)} ></InputText><label htmlFor="name" >תחום</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText type="text" onChange={(e) => setSubject(e.target.value)} ></InputText><label htmlFor="name" >מקצוע</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText type="text" onChange={(e) => setCity(e.target.value)} ></InputText><label htmlFor="name" >עיר</label></div>&nbsp;&nbsp;
+   <FormGroup>
       <FormControlLabel control={<Checkbox checked={clever} onChange={(e) => setClever(e.target.checked)}/>} label="חכם" />
       <FormControlLabel control={<Checkbox checked={talented} onChange={(e) => setTalented(e.target.checked)}/>} label="מוכשר" />
       <FormControlLabel control={<Checkbox checked={quick} onChange={(e) => setQuick(e.target.checked)}/>} label="זריז" />
     </FormGroup>
-    <TextareaAutosize
+    <div><TextareaAutosize
       aria-label="minimum height"
       minRows={5}
       onChange={(e) => setDescription(e.target.value)}
       placeholder="תיאור כללי"
       style={{ width: 200 }}
-    />
-    <TextareaAutosize
+    /></div> 
+    <div><TextareaAutosize
       aria-label="minimum height"
       minRows={5}
       onChange={(e) => setRequirements(e.target.value)}
       placeholder="דרישות"
       style={{ width: 200 }}
-    />
+    /></div>
   <Button className="button"  onClick={handleSave}>שמירה</Button>
   
-
-    </>)
+  </Box> </>)
 }
 export default AddJob;
