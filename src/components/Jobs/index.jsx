@@ -36,7 +36,7 @@ const Jobs = () => {
   useEffect(() => { getJobs() }, [])
   return (<>
     <ListJobs  jobs={jobs} />
-    <Button style={{marginRight:"47.5%"}} className="button" onClick={handlesave}>שמירה</Button>
+    <Button style={{margin:"0 47.5% 2% 47.5% ",minWidth:"100px"}} className="button" onClick={handlesave}>שמירה</Button>
   </>
   )
 }
