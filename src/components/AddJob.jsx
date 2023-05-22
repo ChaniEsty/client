@@ -8,8 +8,6 @@ import { useState,useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { InputText} from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { TextField } from '@mui/material';
-import { Label } from '@mui/icons-material';
 
 function AddJob(){
     const [company, setCompany] = useState("");
@@ -22,52 +20,54 @@ function AddJob(){
     const [quick, setQuick] = useState(false);
     const [generalDescription, setDescription] = useState("");
     const [requirements,setRequirements]=useState("");
-    const {token} = useContext(AuthContext)
-
+    const {token} = useContext(AuthContext);
   const handleSave=async()=>{
     const neededCharacters=JSON.stringify({clever,talented,quick});
-    console.log(generalDescription+"88888888888888888888888888")
     const job={name,generalDescription,requirements,field,subject,city,neededCharacters,company};
-    console.log(requirements,neededCharacters,"save")
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
       }
     }
   console.log(token)
-    const response = await axios.post ("http://localhost:5000/job", job,config)
+    const response = await axios.post("http://localhost:5000/job", job,config)
     console.log(response.status)
-    if (response.status==201){ 
+    if (response.status===201){ 
           alert("job saved");}
   }
     return(<>
     
     <Box sx={{width:'50%',gap:"50%", paddingTop:'2%',paddingRight: '40%'}}>
     <h2>פרטי משרה</h2>
-    <div className="p-float-label"><InputText type="text" onChange={(e) => setCompany(e.target.value)} ></InputText> <label htmlFor="name" >חברה</label></div>&nbsp;&nbsp;
-    <div className="p-float-label"><InputText type="text" onChange={(e) => setName(e.target.value)} ></InputText><label htmlFor="name" >שם</label></div>&nbsp;&nbsp;
-    <div className="p-float-label"><InputText type="text" onChange={(e) => setField(e.target.value)} ></InputText><label htmlFor="name" >תחום</label></div>&nbsp;&nbsp;
-    <div className="p-float-label"><InputText type="text" onChange={(e) => setSubject(e.target.value)} ></InputText><label htmlFor="name" >מקצוע</label></div>&nbsp;&nbsp;
-    <div className="p-float-label"><InputText type="text" onChange={(e) => setCity(e.target.value)} ></InputText><label htmlFor="name" >עיר</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText className="input" type="text" onChange={(e) => setCompany(e.target.value)} ></InputText> 
+    <label>חברה</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText className="input" type="text" onChange={(e) => setName(e.target.value)} ></InputText>
+    <label>שם</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText className="input" type="text" onChange={(e) => setField(e.target.value)} ></InputText>
+    <label>תחום</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText className="input" type="text" onChange={(e) => setSubject(e.target.value)} ></InputText>
+    <label>מקצוע</label></div>&nbsp;&nbsp;
+    <div className="p-float-label"><InputText className="input" type="text" onChange={(e) => setCity(e.target.value)} ></InputText>
+    <label>עיר</label></div>&nbsp;&nbsp;
    <FormGroup>
-      <FormControlLabel control={<Checkbox checked={clever} onChange={(e) => setClever(e.target.checked)}/>} label="חכם" />
-      <FormControlLabel control={<Checkbox checked={talented} onChange={(e) => setTalented(e.target.checked)}/>} label="מוכשר" />
-      <FormControlLabel control={<Checkbox checked={quick} onChange={(e) => setQuick(e.target.checked)}/>} label="זריז" />
+      <FormControlLabel control={<Checkbox  className={`checkbox${clever}`} checked={clever} onChange={(e) => setClever(e.target.checked)}/>} label="חכם" />
+      <FormControlLabel control={<Checkbox  className={`checkbox${talented}`} checked={talented} onChange={(e) => setTalented(e.target.checked)}/>} label="מוכשר" />
+      <FormControlLabel control={<Checkbox  className={`checkbox${quick}`} checked={quick} onChange={(e) => setQuick(e.target.checked)}/>} label="זריז" />
     </FormGroup>
-    <div><TextareaAutosize
+    <div className="p-float-label"><TextareaAutosize 
+      className="input"
       aria-label="minimum height"
       minRows={5}
       onChange={(e) => setDescription(e.target.value)}
-      placeholder="תיאור כללי"
       style={{ width: 200 }}
-    /></div> 
-    <div><TextareaAutosize
+    /><label>תיאור כללי</label></div> 
+    <div className="p-float-label"><TextareaAutosize 
+      className="input"
       aria-label="minimum height"
       minRows={5}
       onChange={(e) => setRequirements(e.target.value)}
-      placeholder="דרישות"
       style={{ width: 200 }}
-    /></div>
+    /><label>דרישות</label></div>
   <Button className="button"  onClick={handleSave}>שמירה</Button>
   
   </Box> </>)

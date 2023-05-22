@@ -150,12 +150,12 @@ body {
 /* //////////////////////////////////////////// */
 /* //////////////////////////////////////////// */
 
-/* input[type="text"] {min-width: 250px;} */
+input[type="text"] {min-width: 250px;}
 /* buttons  */
 .button {
     background-color: #10acb5;
     color: white;
-   
+    border-color: black;
     /* display: inline-block;
     color: #252537;
 
@@ -176,13 +176,27 @@ body {
     margin: 7% auto;
     letter-spacing: 0.05em; */
 }
-.p-button:enabled:hover{
+.input:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #10acb5;
+    border-color: #10acb5;}
+.button:enabled:hover{
     background-color: #000;
     border-color: black;
+    box-shadow: 0 0 0 0.2rem #10acb5;
+
 }
-.p-button{
-    border-color: black;
+.checkboxtrue{
+    color: #10acb5 !important;
 }
+/* .button-input:enabled:focus{
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #10acb5;
+    border-color: #10acb5;
+} */
+
 /* Submits */
 /* .submits {
     width: 48%;

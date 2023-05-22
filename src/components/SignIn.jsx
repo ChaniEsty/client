@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { AuthContext } from "../context/authContext";
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import { Box } from "@mui/material";
 const SignIn = () => {
     const [signInEmail, setSignInEmail] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
@@ -22,16 +23,21 @@ const SignIn = () => {
     }
 
     return (
-        <div>
+        <Box sx={{paddingRight:'40%'}}>
             <h2>התחברות</h2><br/>
-                <InputText className="form-input" id="txt-input" type="text" placeholder="@שם משתמש" onChange={(e) => setSignInEmail(e.target.value)} ></InputText>
-                <br></br>
-                <InputText  type="password" placeholder="סיסמא"  name="password" onChange={(e) => setSignInPassword(e.target.value)}></InputText>
-                <br></br>
-                <Button className="button"  type="button" onClick={() => { signIn(signInEmail, signInPassword) }}> התחבר </Button>
-                <Button className="button" onClick={newPassword}>שכחתי סיסמא</Button><br></br>
+            <div className="p-float-label"> 
+                <InputText className="input" type="text" onChange={(e) => setSignInEmail(e.target.value)} ></InputText>
+                <label>חברה</label>
+            </div>&nbsp;&nbsp;
+            <div className="p-float-label">   
+                <InputText style={{minWidth:"250px"}} className="input" type="password"  name="password" onChange={(e) => setSignInPassword(e.target.value)}></InputText>
+                <label>חברה</label>
+            </div>&nbsp;&nbsp; 
+                
+                <Button className="button"  style={{fontSize:'0.5rem',marginRight: "20%",marginTop: "2%", marginBottom: "2%"}} size="small" onClick={newPassword}>שכחתי סיסמא</Button><br></br>
+                <Button className="button" style={{minWidth:'170px',marginRight:'5%',textAlign:'center',padding: "0.75rem 3.5rem"}} type="button" onClick={() => { signIn(signInEmail, signInPassword) }}> התחבר </Button><br></br>
                 <NavLink to="/signUp">הרשם</NavLink>
-        </div>
+        </Box>
         // <div className="overlay">
         //     {/* <!-- LOGN IN FORM by Omar Dsoky -->*/}
         //     <form>
