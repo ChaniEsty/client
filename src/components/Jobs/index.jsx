@@ -35,6 +35,7 @@ const Jobs = () => {
   }
   useEffect(() => { getJobs() }, [])
   return (<>
+  <h1>{ `${subjects?subjects+",":""}${cities?cities+",":""}${fields?fields+",":""}רשימת המשרות שלך:`}</h1>
     <ListJobs  jobs={jobs} />
     <Button style={{margin:"0 47.5% 2% 47.5% ",minWidth:"100px"}} className="button" onClick={handlesave}>שמירה</Button>
   </>

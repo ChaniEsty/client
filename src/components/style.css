@@ -156,6 +156,7 @@ input[type="text"] {min-width: 250px;}
     background-color: #10acb5;
     color: white;
     border-color: black;
+    min-width: 75px;
     /* display: inline-block;
     color: #252537;
 
