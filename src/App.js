@@ -10,7 +10,7 @@ import "./components/Jobs/job.css"
 import "./components/style.css"
 import AddJob from "./components/AddJob";
 import PersonalArea from "./components/PersonalArea";
-import { AuthContextProvider } from "./context/authContext";
+import {AuthContext, AuthContextProvider } from "./context/authContext";
 import { Box, Container, Paper } from "@mui/material"
 import Footer from "./components/Footer";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -19,7 +19,7 @@ import { color } from "@mui/system";
 
 
 function App() {
-    return (<>
+  return (<>
   
     <AuthContextProvider>
       <Router>

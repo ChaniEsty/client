@@ -23,7 +23,7 @@ const Home = () => {
     }
   }
 return items;}
-  return (<> <Typography sx={{textAlign:"center"}} variant="h5">בואו למצוא את התפקיד הבא שלכם!
+  return (<> <Typography sx={{textAlign:"center",marginTop:"10%"}} variant="h5">בואו למצוא את התפקיד הבא שלכם!
     </Typography><SearchDetails></SearchDetails>
     {/* <Carousel sx={{width:"50%",marginRight:"25%", marginTop:"2%"}} animation="slide" cycleNavigation timeout={300}>{getCompanies()}</Carousel> */}
     <CarouselCompanies></CarouselCompanies></>

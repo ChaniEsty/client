@@ -51,7 +51,7 @@ const SearchDetails = () => {
     }
     useEffect(() => { getOptions() }, [])
     return (
-        <Box sx={{ display: "flex", marginRight: "30%", marginLeft: "20%" }}>
+        <Box sx={{ display: "flex", marginRight: "20%", marginLeft: "20%" }}>
             <Autocomplete
                 id="field"
                 style={{ width: 250 }}

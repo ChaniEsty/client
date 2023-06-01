@@ -24,10 +24,10 @@ export const AuthContextProvider = ({ children }) => {
             }
         );
         if (res.statusText == "OK") {
-            alert("logged in");
+            //alert("logged in");
             setCurrentUser(res.data.user);
             setToken(res.data.accessToken);
-            // navigate("/personalArea")
+            // navigate("/personalArea");
         }
 
         else

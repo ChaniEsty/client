@@ -1,4 +1,32 @@
-.signUp{
+/* .signUp{
     justify-content: center;
     gap: "3%";
+}
+.p-float-label > label{
+    left: 0 important!;
+right: 0%;
+}
+.error{
+    border:1px solid red;
+} */
+.form-demo .card {
+    width: 450px;
+    min-width: 450px;
+}
+.form-demo .card form {
+    margin-top: 2rem;
+}
+.form-demo .card .field {
+    margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 960px) {
+    .form-demo .card {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .form-demo .card {
+        width: 100%;
+        min-width: 0;
+    }
 }

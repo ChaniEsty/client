@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import React from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink , Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
@@ -9,6 +9,11 @@ const SignIn = () => {
     const [signInEmail, setSignInEmail] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
     const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleSignIn=()=>{
+        signIn(signInEmail,signInPassword);
+        navigate("/personalArea");
+    }
     const newPassword = async () => {
         const response = await fetch(`http://localhost:5000/logIn/${signInEmail}/password`,
             {
@@ -27,15 +32,15 @@ const SignIn = () => {
             <h2>התחברות</h2><br/>
             <div className="p-float-label"> 
                 <InputText className="input" type="text" onChange={(e) => setSignInEmail(e.target.value)} ></InputText>
-                <label>חברה</label>
+                <label style={{marginLeft:'80%'}}>דוא"ל</label>
             </div>&nbsp;&nbsp;
             <div className="p-float-label">   
                 <InputText style={{minWidth:"250px"}} className="input" type="password"  name="password" onChange={(e) => setSignInPassword(e.target.value)}></InputText>
-                <label>חברה</label>
+                <label style={{marginLeft:'80%'}}>סיסמא</label>
             </div>&nbsp;&nbsp; 
                 
                 <Button className="button"  style={{fontSize:'0.5rem',marginRight: "20%",marginTop: "2%", marginBottom: "2%"}} size="small" onClick={newPassword}>שכחתי סיסמא</Button><br></br>
-                <Button className="button" style={{minWidth:'170px',marginRight:'5%',textAlign:'center',padding: "0.75rem 3.5rem"}} type="button" onClick={() => { signIn(signInEmail, signInPassword) }}> התחבר </Button><br></br>
+                <Button className="button" style={{minWidth:'170px',marginRight:'5%',textAlign:'center',padding: "0.75rem 3.5rem"}} type="button" onClick={() => {handleSignIn()}}> התחבר </Button><br></br>
                 <NavLink to="/signUp">הרשם</NavLink>
         </Box>
         // <div className="overlay">
