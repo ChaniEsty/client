@@ -21,7 +21,7 @@
 //     const shouldMarkError = field => {
 //         const hasError = errors[field];
 //         const shouldShow = touched[field];
-  
+
 //         return hasError ? shouldShow : false;
 //       }; 
 //     const signUp = async (role) => {
@@ -48,7 +48,7 @@
 //     const errors = validate(email, password);
 //     const isDisabled = Object.keys(errors).some(x => errors[x])
 //     return (
-        
+
 //         <Box sx={{width:"60%" ,textAlign:'center',marginRight:"20%"}}>
 //             <Typography variant="h5">עדיין לא נרשמת?</Typography>
 //             {/* <div style={{marginRight:'40%'}}> */}
@@ -77,7 +77,7 @@
 //                 <label>אימות סיסמא</label>
 //             </div>&nbsp;&nbsp; 
 //             {/* </div> */}
-            
+
 
 // {/* <button disabled={!isEnabled}>Sign up</button>; */}
 //             <Button className="button" disabled={isDisabled} onClick={() => { signUp("מעסיק") }}>מעסיק</Button>
@@ -94,7 +94,9 @@ import { Button } from 'primereact/button';
 import { Password } from 'primereact/password';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
+import { RadioButton } from 'primereact/radiobutton';
 import { classNames } from 'primereact/utils';
+import { Link, NavLink } from "react-router-dom";
 import "./signUp.css"
 const SignUp = () => {
     const [showMessage, setShowMessage] = useState(false);
@@ -115,33 +117,33 @@ const SignUp = () => {
         else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
             errors.email = 'Invalid email address. E.g. example@email.com';
         }
-
         if (!data.password) {
             errors.password = 'סיסמא שדה חובה';
         }
-        if(!(data.password===data.checkPassword))
-            errors.checkPassword='סיסמא שגויה'
+        if (!(data.password === data.checkPassword))
+            errors.checkPassword = 'סיסמא שגויה'
 
-       
+
 
         return errors;
     };
 
-    const onSubmit =async (data, form) => {
+    const onSubmit = async (data, form) => {
+        console.log("in submit" + data);
         setFormData(data);
-        setShowMessage(true);
+        const user = { email: data.email, name: data.firstName + data.lastName, phone: data.phone, password: data.password, role: data.role };
         const response = await fetch("http://localhost:5000/logIn",
-                    {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: formData
-                    })
-                if (response.ok)
-                    alert(` נוסף ${formData.role} `);
-                else
-                    alert(`can't add ${formData.role}`);
-                console.log(response);
-            
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            })
+        if (response.ok)
+            alert(` נוסף ${formData.role} `);
+        else
+            alert(`can't add ${formData.role}`);
+        console.log(response);
+        setShowMessage(true);
         form.restart();
     };
 
@@ -150,7 +152,7 @@ const SignUp = () => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
     };
 
-    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false) } /></div>;
+    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
     const passwordHeader = <h6>בחר סיסמא</h6>;
     const passwordFooter = (
         <React.Fragment>
@@ -166,17 +168,17 @@ const SignUp = () => {
     );
 
     return (
-        <div style={{marginRight:'30%'}}className="form-demo">
-            <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top"  breakpoints={{ '960px': '80vw' }} style={{ width: '15vw' }}>
-               
-                    <h2>נרשמת בהצלחה</h2>
-                
+        <div style={{ marginRight: '30%' }} className="form-demo">
+            <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" breakpoints={{ '960px': '80vw' }} style={{ width: '15vw' }}>
+
+                <h2>נרשמת בהצלחה</h2>
+
             </Dialog>
 
             <div className="flex justify-content-center">
                 <div className="card">
                     <h1 className="text-center">עדיין לא נרשמת?</h1>
-                    <Form onSubmit={onSubmit} initialValues={{ firstName: '',lastName:'' ,email: '', phone:'',password: '',checkPassword:''}} validate={validate} render={({ handleSubmit }) => (
+                    <Form onSubmit={onSubmit} initialValues={{ firstName: '', lastName: '', email: '', phone: '', password: '', checkPassword: '', role: '' }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">
                             <Field name="firstName" render={({ input, meta }) => (
                                 <div className="field">
@@ -190,7 +192,7 @@ const SignUp = () => {
                             <Field name="lastName" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="lastName" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                                        <InputText id="lastName" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label htmlFor="lastName" className={classNames({ 'p-error': isFormFieldValid(meta) })}>שם משפחה*</label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -206,10 +208,10 @@ const SignUp = () => {
                                     {getFormErrorMessage(meta)}
                                 </div>
                             )} />
-                             <Field name="phone" render={({ input, meta }) => (
+                            <Field name="phone" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="phone" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                                        <InputText id="phone" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label htmlFor="phone" className={classNames({ 'p-error': isFormFieldValid(meta) })}> טלפון </label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -218,7 +220,7 @@ const SignUp = () => {
                             <Field name="password" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <Password id="password" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })} header={passwordHeader} footer={passwordFooter} />
+                                        <Password id="password" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} header={passwordHeader} footer={passwordFooter} />
                                         <label htmlFor="password" className={classNames({ 'p-error': isFormFieldValid(meta) })}>סיסמא*</label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -227,18 +229,39 @@ const SignUp = () => {
                             <Field name="checkPassword" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText type='password' id="checkPassword" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                                        <InputText type='password' id="checkPassword" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label htmlFor="password" className={classNames({ 'p-error': isFormFieldValid(meta) })}>אימות סיסמא* </label>
                                     </span>
                                     {getFormErrorMessage(meta)}
                                 </div>
                             )} />
-                            <Button type="submit" label="הרשם" className="button"/>
-                        </form>
+  
+                            <Field name="employee" render={({ input, meta }) => (
+                                <div className="field">
+                                    <span className="p-float-label">
+                                        <RadioButton inputId="role"{...input} type="radio" name="position" value="empee"className={classNames({ 'p-invalid': isFormFieldValid(meta) })}  checked={formData.role === 'מחפש תעסוקה'} />
+                                        <label htmlFor="option1" className={classNames({ 'p-error': isFormFieldValid(meta) })}>מחפש תעסוקה</label>
+                                    </span>
+                                    {getFormErrorMessage(meta)}
+                                </div>
+                            )} />
+                            <Field name="employer" render={({ input, meta }) => (
+                                <div className="field">
+                                    <span className="p-float-label">
+                                        <RadioButton inputId="role" type="radio"{...input} name="position" value="emp" className={classNames({ 'p-invalid': isFormFieldValid(meta) })} checked={formData.role === 'מעסיק'} />
+                                        <label htmlFor="option2" className={classNames({ 'p-error': isFormFieldValid(meta) })}>מעסיק</label>
+                                    </span>
+                                    {getFormErrorMessage(meta)}
+                                </div>
+                            )} />
+                            <NavLink to={"/signIn"}>רשום כבר? לחץ כאן להתחברות</NavLink>
+                            <Button type="submit" label="הרשם" className="button" />
+                            
+                        </form >
                     )} />
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
     );
 }
-export default SignUp
+export default SignUp;
