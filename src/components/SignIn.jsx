@@ -100,7 +100,7 @@
 // export default SignIn;
 
 
-import React, { useState ,useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -109,14 +109,16 @@ import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { RadioButton } from 'primereact/radiobutton';
 import { classNames } from 'primereact/utils';
-import { NavLink , useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 import "./signUp.css"
 import { Radio } from '@mui/material';
+import { Troubleshoot } from '@mui/icons-material';
 const SignIn = () => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
+    const [visible, setVisible] = useState(false);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const validate = (data) => {
@@ -148,9 +150,8 @@ const SignIn = () => {
     //     signIn(formData.email, formData.password);
     //     navigate("/personalArea");
     // }
-    const newPassword = async () => {
-        console.log(formData.email)
-        const response = await fetch(`http://localhost:5000/logIn/${formData.email}/password`,
+    const newPassword = async (email) => {
+        const response = await fetch(`http://localhost:5000/logIn/${email}/password`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -181,16 +182,21 @@ const SignIn = () => {
 
     return (
         <div style={{ marginRight: '30%' }} className="form-demo">
-            <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" breakpoints={{ '960px': '80vw' }} style={{ width: '15vw' }}>
+            <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" breakpoints={{ '960px': '15vw' }} style={{ width: '15vw' }}>
 
                 <h2>נרשמת בהצלחה</h2>
 
             </Dialog>
+            <Dialog visible={visible} onHide={() => setVisible(false)} position="top" breakpoints={{ '960px': '15vw' }} style={{ width: '15vw' }}>
 
+                <h4>לאיפוס סיסמא הכנס מייל</h4>
+                <InputText style={{width:'12vw'}} id="email" placeholder='email' onChange={(e)=>{newPassword(e.target.value)}}/>
+
+            </Dialog>
             <div className="flex justify-content-center">
                 <div className="card">
                     <h2 className="text-center">התחברות</h2>
-                    <Form onSubmit={onSubmit} initialValues={{email: '', password: '' }} validate={validate} render={({ handleSubmit }) => (
+                    <Form onSubmit={onSubmit} initialValues={{ email: '', password: '' }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">
 
                             <Field name="email" render={({ input, meta }) => (
@@ -214,8 +220,8 @@ const SignIn = () => {
                                 </div>
                             )} />
 
-                            <Button className="button"  style={{width:"30%",alignItems:"end"}} onClick={newPassword}>שכחתי סיסמא</Button>&nbsp;&nbsp;
-                            <Button type ='submit'className="button" > התחבר </Button><br></br>
+                            <Button className="button" style={{ width: "25%", alignItems: "end", fontSize: "10px", marginRight: "75%" }} onClick={()=>{setVisible(true)}}>שכחתי סיסמא</Button>&nbsp;&nbsp;
+                            <Button type='submit' className="button" > התחבר </Button><br></br><br></br>
                             {/* <Button type="submit" label="Submit" className="mt-2" /> */}
                             <NavLink to="/signUp">הרשם</NavLink>
                         </form>

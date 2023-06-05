@@ -51,7 +51,9 @@ const SearchDetails = () => {
     }
     useEffect(() => { getOptions() }, [])
     return (
-        <Box sx={{ display: "flex", marginRight: "20%", marginLeft: "20%" }}>
+        <><Box><h3 style={{marginRight:"42%"}}>סננו משרות עפ"י העדפותיכם</h3>
+        <Box sx={{ display: "flex", marginRight: "25%", marginLeft: "20%" }}>
+        
             <Autocomplete
                 id="field"
                 style={{ width: 250 }}
@@ -99,6 +101,7 @@ const SearchDetails = () => {
 
             />
             <Button className="button" onClick={handleSearch}>חיפוש</Button>
-        </Box>)
+        </Box> </Box>
+        </>)
 }
 export default SearchDetails;
