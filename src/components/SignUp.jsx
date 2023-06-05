@@ -95,7 +95,6 @@ import { Password } from 'primereact/password';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
-//import './FormDemo.css';
 import "./signUp.css"
 const SignUp = () => {
     const [showMessage, setShowMessage] = useState(false);
@@ -128,10 +127,21 @@ const SignUp = () => {
         return errors;
     };
 
-    const onSubmit = (data, form) => {
+    const onSubmit =async (data, form) => {
         setFormData(data);
         setShowMessage(true);
-
+        const response = await fetch("http://localhost:5000/logIn",
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: formData
+                    })
+                if (response.ok)
+                    alert(` נוסף ${formData.role} `);
+                else
+                    alert(`can't add ${formData.role}`);
+                console.log(response);
+            
         form.restart();
     };
 
@@ -223,15 +233,7 @@ const SignUp = () => {
                                     {getFormErrorMessage(meta)}
                                 </div>
                             )} />
-                            
-                            
-                            {/* const [email, setEmail] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [firstName, setFirstName] = useState("");
-//     const [lastName, setLastName] = useState("");
-//     const [phone, setPhone] = useState("");
-//     const [checkPassword, setCheckPassword] = useState(""); */}
-                            <Button type="submit" label="Submit" className="mt-2" />
+                            <Button type="submit" label="הרשם" className="button"/>
                         </form>
                     )} />
                 </div>
