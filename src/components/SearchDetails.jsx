@@ -52,7 +52,7 @@ const SearchDetails = () => {
     useEffect(() => { getOptions() }, [])
     return (
         <><Box><h3 style={{marginRight:"42%"}}>סננו משרות עפ"י העדפותיכם</h3>
-        <Box sx={{ display: "flex", marginRight: "25%", marginLeft: "20%" }}>
+        <Box sx={{ display: "flex", marginRight: "20%", marginLeft: "20%" }}>
         
             <Autocomplete
                 id="field"

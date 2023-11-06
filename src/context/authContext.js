@@ -23,15 +23,14 @@ export const AuthContextProvider = ({ children }) => {
                 withCredentials: true,
             }
         );
-        if (res.statusText == "OK") {
-            //alert("logged in");
+        console.log(res);
+        if (true) {
+            alert(res.data.message);
             setCurrentUser(res.data.user);
             setToken(res.data.accessToken);
-            // navigate("/personalArea");
+            
         }
-
-        else
-            alert("not found");
+        return res.status;
     };
     const signOut = () => {
 

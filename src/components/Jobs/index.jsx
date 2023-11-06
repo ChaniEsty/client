@@ -39,7 +39,7 @@ const Jobs = () => {
   return (<>{
     jobs.length>0?
       
-        <><SearchDetails></SearchDetails><h1> { `${subjects ? subjects + "," : ""}${cities ? cities + "," : ""}${fields ? fields + "," : ""}רשימת המשרות שלך:`}</h1>
+        <><SearchDetails></SearchDetails><h1 style={{textAlign:"center"}}> { `${subjects ? subjects + "," : ""}${cities ? cities + "," : ""}${fields ? fields + "," : ""}רשימת המשרות שלך:`}</h1>
         <ListJobs  jobs={jobs} />
         <Button style={{margin:"0 47.5% 2% 47.5% ",minWidth:"100px"}} className="button" onClick={handlesave}>שמירה</Button>
       </>: 

@@ -124,12 +124,12 @@ const SignIn = () => {
     const validate = (data) => {
         let errors = {};
 
-        if (!data.firstName) {
-            errors.firstName = 'שם שדה חובה';
-        }
-        if (!data.lastName) {
-            errors.lastName = 'שם שדה חובה';
-        }
+        // if (!data.firstName) {
+        //     errors.firstName = 'שם שדה חובה';
+        // }
+        // if (!data.lastName) {
+        //     errors.lastName = 'שם שדה חובה';
+        // }
         if (!data.email) {
             errors.email = 'דוא"ל שדה חובה.';
         }
@@ -139,8 +139,8 @@ const SignIn = () => {
         if (!data.password) {
             errors.password = 'סיסמא שדה חובה';
         }
-        if (!(data.password === data.checkPassword))
-            errors.checkPassword = 'סיסמא שגויה'
+        // if (!(data.password === data.checkPassword))
+        //     errors.checkPassword = 'סיסמא שגויה'
 
 
 
@@ -166,11 +166,14 @@ const SignIn = () => {
     const onSubmit = async (data, form) => {
         console.log("in submit" + data);
         setFormData(data);
-        signIn(formData.email, formData.password);
-        navigate("/personalArea");
-        setShowMessage(true);
-
-        form.restart();
+        const status = await signIn(data.email, data.password);
+        if (status == 200) {
+            setShowMessage(true);
+            form.restart();
+            navigate("/personalArea");
+        }
+        else
+            alert("not found");
     };
 
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
@@ -190,7 +193,7 @@ const SignIn = () => {
             <Dialog visible={visible} onHide={() => setVisible(false)} position="top" breakpoints={{ '960px': '15vw' }} style={{ width: '15vw' }}>
 
                 <h4>לאיפוס סיסמא הכנס מייל</h4>
-                <InputText style={{width:'12vw'}} id="email" placeholder='email' onChange={(e)=>{newPassword(e.target.value)}}/>
+                <InputText style={{ width: '12vw' }} id="email" placeholder='email' onChange={(e) => { newPassword(e.target.value) }} />
 
             </Dialog>
             <div className="flex justify-content-center">
@@ -220,7 +223,7 @@ const SignIn = () => {
                                 </div>
                             )} />
 
-                            <Button className="button" style={{ width: "25%", alignItems: "end", fontSize: "10px", marginRight: "75%" }} onClick={()=>{setVisible(true)}}>שכחתי סיסמא</Button>&nbsp;&nbsp;
+                            <Button className="button" style={{ width: "25%", alignItems: "end", fontSize: "10px", marginRight: "75%" }} onClick={() => { setVisible(true) }}>שכחתי סיסמא</Button>&nbsp;&nbsp;
                             <Button type='submit' className="button" > התחבר </Button><br></br><br></br>
                             {/* <Button type="submit" label="Submit" className="mt-2" /> */}
                             <NavLink to="/signUp">הרשם</NavLink>

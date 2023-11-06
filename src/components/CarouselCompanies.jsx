@@ -18,11 +18,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Carousel } from 'primereact/carousel';
+// import Slider from 'react-slick';
 import { Tag } from 'primereact/tag';
+// import './carousel.css'; // Import the CSS file for the carousel
 //import { ProductService } from './service/ProductService';
 
 export default function NumScrollDemo() {
-    //const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     var conpanies = [
                 {
         
@@ -130,7 +132,34 @@ export default function NumScrollDemo() {
             </div>
         );
     };
-
+//     const Carousel = () => {
+//         // Configuration options for the carousel
+//         const settings = {
+//           dots: true,
+//           infinite: true,
+//           speed: 500,
+//           slidesToShow: 3,
+//           slidesToScroll: 3
+//         };
+        
+//   return (
+//     <div className="carousel-container">
+//     <Slider {...settings}>
+//       <div>
+//         <img src="../images/intel.png" alt="Image 1" className="carousel-image" />
+//       </div>
+//       <div>
+//         <img src="../images/rokar.jpg" alt="Image 2" className="carousel-image" />
+//       </div>
+//       <div>
+//         <img src="../images/rokar.jpg" alt="Image 3" className="carousel-image" />
+//       </div>
+//       {/* Add more image divs as needed */}
+//     </Slider>
+//     </div>
+//   );
+// };
+// export default Carousel;
     return (
         <div className="card">
             <Carousel value={conpanies}  numVisible={6} numScroll={1} className="custom-carousel" responsiveOptions={responsiveOptions}  itemTemplate={productTemplate} />

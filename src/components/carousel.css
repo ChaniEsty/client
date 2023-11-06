@@ -1,0 +1,14 @@
+.carousel-container {
+    display: flex;
+  flex-wrap: nowrap; /* Ensure the images stay in a single row */
+  justify-content: center;
+  align-items: center; /* Center align the images vertically */
+  overflow: hidden; 
+  }
+  
+  .carousel-image {
+    flex: 0 0 auto; /* Allow the images to shrink or grow as needed */
+  margin: 0 10px;
+  max-width: 100%; /* Limit the maximum width of the images */
+  height: auto; 
+  }

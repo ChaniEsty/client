@@ -15,25 +15,35 @@ function AddJob() {
   const [field, setField] = useState("");
   const [subject, setSubject] = useState("");
   const [city, setCity] = useState("");
-  const [clever, setClever] = useState(false);
-  const [talented, setTalented] = useState(false);
-  const [quick, setQuick] = useState(false);
+  const [energetic, setEnergetic] = useState(false);
+  const [sensitive, setSensitive] = useState(false);
+  const [friendly, setFriendly] = useState(false);
+  const [effective, setEffective] = useState(false);
+  const [curious, setCurious] = useState(false);
+
   const [generalDescription, setDescription] = useState("");
   const [requirements, setRequirements] = useState("");
-  const { token } = useContext(AuthContext);
+  const { token, currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
+
   const handleSave = async () => {
-    const neededCharacters = JSON.stringify({ clever, talented, quick });
-    const job = { name, generalDescription, requirements, field, subject, city, neededCharacters, company };
-    const config = {
-      headers: {
-        'Authorization': 'Bearer ' + token
+    console.log(currentUser);
+    if (currentUser.role === "employee")
+      alert("not authorized")
+    else {
+      const neededCharacters = JSON.stringify({ energetic, sensitive,friendly,effective, curious });
+      const job = { name, generalDescription, requirements, field, subject, city, neededCharacters, company };
+      const config = {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
       }
-    }
-    console.log(token)
-    const response = await axios.post("http://localhost:5000/job", job, config)
-    console.log(response.status)
-    if (response.status === 201) {
-      alert("job saved");
+      console.log(token)
+      const response = await axios.post("http://localhost:5000/job", job, config)
+      console.log(response.status)
+      if (response.status === 201) {
+        alert("job saved");
+      }
     }
   }
   return (<>
@@ -61,9 +71,12 @@ function AddJob() {
         <label>עיר</label>
       </div>&nbsp;&nbsp;
       <FormGroup>
-        <FormControlLabel control={<Checkbox className={`checkbox${clever}`} checked={clever} onChange={(e) => setClever(e.target.checked)} />} label="חכם" />
-        <FormControlLabel control={<Checkbox className={`checkbox${talented}`} checked={talented} onChange={(e) => setTalented(e.target.checked)} />} label="מוכשר" />
-        <FormControlLabel control={<Checkbox className={`checkbox${quick}`} checked={quick} onChange={(e) => setQuick(e.target.checked)} />} label="זריז" />
+      {/* ["אנרגטי","רגיש","ידידותי","יעיל","סקרן"] */}
+        <FormControlLabel control={<Checkbox className={`checkbox${energetic}`} checked={energetic} onChange={(e) => setEnergetic(e.target.checked)} />} label="אנרגטי" />
+        <FormControlLabel control={<Checkbox className={`checkbox${sensitive}`} checked={sensitive} onChange={(e) => setSensitive(e.target.checked)} />} label="רגיש" />
+        <FormControlLabel control={<Checkbox className={`checkbox${friendly}`} checked={friendly} onChange={(e) => setFriendly(e.target.checked)} />} label="ידידותי" />
+        <FormControlLabel control={<Checkbox className={`checkbox${effective}`} checked={effective} onChange={(e) => setEffective(e.target.checked)} />} label="יעיל" />
+        <FormControlLabel control={<Checkbox className={`checkbox${curious}`} checked={curious} onChange={(e) => setCurious(e.target.checked)} />} label="סקרן" />
       </FormGroup>
       <div className="p-float-label"><TextareaAutosize
         className="input"
