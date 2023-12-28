@@ -2,7 +2,7 @@ import React from "react";
 import SearchDetails from "./SearchDetails";
 // import Carousel from 'react-material-ui-carousel'
 import {Grid, Card,Typography} from "@mui/material";
-import Carousel from "./CarouselCompanies";
+import CircularCarousel from "./CarouselCompanies";
 const Home = () => {
 //   const getCompanies = () => {
 //   const sliderCompanies = 3;
@@ -25,7 +25,7 @@ const Home = () => {
   return (<> <Typography sx={{textAlign:"center",marginTop:"5%",marginBottom:"5%"}} variant="h5">בואו למצוא את התפקיד הבא שלכם!
     </Typography><SearchDetails></SearchDetails>
     {/* <Carousel sx={{width:"50%",marginRight:"25%", marginTop:"2%"}} animation="slide" cycleNavigation timeout={300}>{getCompanies()}</Carousel> */}
-    <div style={{marginTop:"5%",marginBottom:"5%"}}><Carousel></Carousel></div></>
+    <div style={{marginTop:"5%",marginBottom:"5%"}}><CircularCarousel></CircularCarousel></div></>
   );
 };
 

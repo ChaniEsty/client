@@ -26,6 +26,16 @@ import { Tag } from 'primereact/tag';
 export default function NumScrollDemo() {
     const [products, setProducts] = useState([]);
     var conpanies = [
+        {
+        
+            description: "Intel",
+            image: "../images/intel.png"
+        },
+        {
+
+            description: "Rokar",
+            image: "../images/rokar.jpg"
+        },
                 {
         
                     description: "Intel",
@@ -162,7 +172,7 @@ export default function NumScrollDemo() {
 // export default Carousel;
     return (
         <div className="card">
-            <Carousel value={conpanies}  numVisible={6} numScroll={1} className="custom-carousel" responsiveOptions={responsiveOptions}  itemTemplate={productTemplate} />
+            <Carousel value={conpanies}  numVisible={6} numScroll={6} className="custom-carousel" responsiveOptions={responsiveOptions}  itemTemplate={productTemplate} />
         </div>
     )
 }
