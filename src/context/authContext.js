@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext();
 
@@ -11,11 +10,8 @@ export const AuthContextProvider = ({ children }) => {
     const [token, setToken] = useState(
         sessionStorage.getItem("token") || null
     );
-    // const navigate = useNavigate()
-
-    //signInEmail,signInPassword
     const signIn = async (signInEmail, signInPassword) => {
-        console.log(signInEmail,signInPassword);
+        console.log(signInEmail, signInPassword);
         const res = await axios.post(
             "http://localhost:5000/login/signIn",
             { signInEmail, signInPassword },
@@ -23,14 +19,10 @@ export const AuthContextProvider = ({ children }) => {
                 withCredentials: true,
             }
         );
-        console.log(res);
-        if (true) {
-            alert(res.data.message);
-            setCurrentUser(res.data.user);
-            setToken(res.data.accessToken);
-            
-        }
+        setCurrentUser(res.data.user);
+        setToken(res.data.accessToken);
         return res.status;
+
     };
     const signOut = () => {
 

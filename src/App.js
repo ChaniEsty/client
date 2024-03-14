@@ -1,23 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import Contact from "./components/Contact";
+import AddJob from "./components/AddJob";
+import PersonalArea from "./components/PersonalArea";
+import { AuthContextProvider } from "./context/authContext";
+import { Box} from "@mui/material"
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import "./App.css";
 import "./components/Jobs/job.css"
 import "./components/style.css"
-import AddJob from "./components/AddJob";
-import PersonalArea from "./components/PersonalArea";
-import { AuthContext, AuthContextProvider } from "./context/authContext";
-import { Box, Container, Paper } from "@mui/material"
-import Footer from "./components/Footer";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { color } from "@mui/system";
-import Header from "./components/Header";
-// import "./signUp.css"
 
 
 function App() {

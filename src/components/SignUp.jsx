@@ -6,7 +6,7 @@ import { Password } from 'primereact/password';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { TextField, Autocomplete } from "@mui/material";
 
 
@@ -14,7 +14,7 @@ import "./signUp.css"
 const SignUp = () => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState();
-
+    const navigate = useNavigate();
     const validate = (data) => {
         let errors = {};
 
@@ -35,9 +35,6 @@ const SignUp = () => {
         }
         if (!(data.password === data.checkPassword))
             errors.checkPassword = 'סיסמא שגויה'
-
-
-
         return errors;
     };
 
@@ -54,10 +51,13 @@ const SignUp = () => {
         if (response.ok)
             alert(` נוסף ${data.role} `);
         else
-            alert(`can't add ${data.role}`);
+            alert(`לא יכול להוסיף ${data.role}`);
         console.log(response);
         setShowMessage(true);
         form.restart();
+        navigate("/signIn");
+
+
     };
     const isFormFieldValid = (meta) => meta && meta.touched && meta.error;
     const getFormErrorMessage = (meta) => {
