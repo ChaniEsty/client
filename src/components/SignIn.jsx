@@ -35,16 +35,16 @@ const SignIn = () => {
             })
         console.log(response);
         if (response.ok)
-            alert("new password sent");
+            alert("סיסמא חדשה נשלחה");
         else
-            alert("cant send password");
+            alert("לא הצליח נסה שנית");
     }
 
     const onSubmit = async (data, form) => {
-        console.log("in submit" + data);
+        console.log("Submit");
         setFormData(data);
+        console.log("ssssssssssss");
         const status = await signIn(data.email, data.password);
-        console.log("status: " + status)
         if (status == 200) {
             setShowMessage(true);
             form.restart();

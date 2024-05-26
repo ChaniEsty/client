@@ -11,7 +11,6 @@ export const AuthContextProvider = ({ children }) => {
         sessionStorage.getItem("token") || null
     );
     const signIn = async (signInEmail, signInPassword) => {
-        console.log(signInEmail, signInPassword);
         const res = await axios.post(
             "http://localhost:5000/login/signIn",
             { signInEmail, signInPassword },
@@ -19,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
                 withCredentials: true,
             }
         );
+
         setCurrentUser(res.data.user);
         setToken(res.data.accessToken);
         return res.status;

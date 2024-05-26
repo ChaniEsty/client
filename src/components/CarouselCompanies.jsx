@@ -1,98 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import { Carousel } from 'primereact/carousel';
+import React from 'react';
+import Carousel from 'react-material-ui-carousel'
 
+const CarouselCompanies = (props) => {
+  var companies = [
+    {
 
-export default function NumScrollDemo() {
-    var conpanies = [
-        {
+      description: "Intel",
+      image: "../images/intel.png"
+    },
+    {
 
-            description: "Intel",
-            image: "../images/intel.png"
-        },
-        {
+      description: "Qmarkets",
+      image: "../images/Qmarkets-logo.png"
+    },
+    {
+      description: "Microsoft",
+      image: "../images/microsoft.jpg"
+    },
+    {
 
-            description: "Rokar",
-            image: "../images/rokar.jpg"
-        },
-        {
+      description: "Matrix",
+      image: "../images/matrix.png"
+    },
+    {
 
-            description: "Intel",
-            image: "../images/intel.png"
-        },
-        {
+      description: "Aplied",
+      image: "../images/apllied.jpg"
+    },
+    {
 
-            description: "Rokar",
-            image: "../images/rokar.jpg"
-        },
-        {
-            description: "Microsoft",
-            image: "../images/microsoft.jpg"
-        },
-        {
+      description: "Triple Whale",
+      image: "../images/triple-whale.jpg"
+    }, {
 
-            description: "Matrix",
-            image: "../images/matrix.png"
-        },
-        {
+      description: "Artlist",
+      image: "../images/Artlist_Logo.png"
+    }, {
 
-            description: "Aplied",
-            image: "../images/apllied.jpg"
-        },
-        {
+      description: "Rokar",
+      image: "../images/rokar.jpg"
+    },
+    {
 
-            description: "Intel",
-            image: "../images/intel.png"
-        },
-        {
+      description: "Vast_logo.png",
+      image: "../images/Vast_logo.png"
+    },
+    {
 
-            description: "Rokar",
-            image: "../images/rokar.jpg"
-        },
-        {
-            description: "Microsoft",
-            image: "../images/microsoft.jpg"
-        },
-        {
+      description: "Qualitest.jpg",
+      image: "../images/Qualitest.jpg"
+    },
+    {
 
-            description: "Matrix",
-            image: "../images/matrix.png"
-        },
-        {
+      description: "Check_Point_logo.png",
+      image: "../images/Check_Point_logo.png"
+    },
+    {
 
-            description: "Aplied",
-            image: "../images/apllied.jpg"
-        },
+      description: "Fiverr.png",
+      image: "../images/Fiverr.png"
+    },
+  ]
+  const sliderItems = companies.length > 4 ? 4 : companies.length;
+  const items = [];
 
-    ]
-    const responsiveOptions = [
-        {
-            breakpoint: '1199px',
-            numVisible: 5,
-            numScroll: 1
-        },
-        {
-            breakpoint: '991px',
-            numVisible: 4,
-            numScroll: 1
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 3,
-            numScroll: 1
-        }
-    ];
-    const productTemplate = (product) => {
-        return (
-            <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                <div className="mb-3">
-                    <img style={{ width: '100px', height: '50px' }} src={`${product.image}`} alt={product.description} className="w-6 shadow-2" />
-                </div>
-            </div>
-        );
-    };
-    return (
-        <div className="card">
-            <Carousel value={conpanies} numVisible={6} numScroll={6} className="custom-carousel" responsiveOptions={responsiveOptions} itemTemplate={productTemplate} />
-        </div>
-    )
-}
+  for (let i = 0; i < companies.length; i += sliderItems) {
+    if (i % sliderItems === 0) {
+      items.push(
+        companies.slice(i, i + sliderItems).map((da) => {
+          console.log(da, "Ban clicked");
+          return <img className='carusel_img' src={da.image} alt={da.description} style={{ "width": "25%", "height": "200px", "padding": "45px" }} />;
+        })
+      );
+    }
+  }
+  return (
+    <Carousel interval={4000}>
+      {items}
+    </Carousel>
+  );
+};
+
+export default CarouselCompanies;

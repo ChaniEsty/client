@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import SearchDetails from "./SearchDetails";
 import axios from "axios";
 import ListJobs from "./Jobs/listJobs";
@@ -10,18 +11,23 @@ import "./style.css"
 const PersonalArea = () => {
   const [jobs, setJobs] = useState([]);
   const [personality, setPersonality] = useState("");
+  const { search } = useLocation();
+  let query = React.useMemo(() => new URLSearchParams(search), [search]);
+  const fields = query.get("field");
+  const subjects = query.get("subject");
+  const cities = query.get("city");
   const { currentUser, token } = useContext(AuthContext);
   const getDetailes = async () => {
-    console.log(currentUser);
+    console.log(currentUser,"getDetailes");
     let email = null;
     if (currentUser != null) {
       email = currentUser.email;
     }
     const response = await axios.get(`http://localhost:5000/job/${email}`);
     console.log(response, "inp");
-    if (response.data != "no jobs") {
+    if (response?.data != "no jobs") {
       console.log(response.data.jobs);
-      setJobs(response.data.jobs);
+      setJobs(response?.data?.jobs);
     }
 
   }
@@ -53,17 +59,16 @@ const PersonalArea = () => {
 
   // }
   const detectPersonality = async () => {
-    const response = await axios.post('http://127.0.0.1:8000/detect-personality', { text: personality }
-    );
+    const response = await axios.post('http://127.0.0.1:8000/detect-personality', { text: personality });
     console.log(response.status);
-    console.log(response.data);
+    console.log(response.data,"person");
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
       }
     }
-    const personality =
-      axios.post('http://localhost:5000/user/personality', response.data, config);
+    const personality_response = await axios.get(`http://localhost:5000/user/job?field=${fields}&subject=${subjects}&city=${cities}&character=${JSON.stringify(response.data)}`,config);
+    getDetailes();
   }
   useEffect(() => { getDetailes() }, [])
 

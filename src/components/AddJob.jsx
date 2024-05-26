@@ -26,10 +26,7 @@ function AddJob() {
   const { token, currentUser } = useContext(AuthContext);
 
   const handleSave = async () => {
-    console.log(currentUser);
-    if (currentUser.role === "employee")
-      alert("לא מורשה")
-    else {
+    if (currentUser?.role === "employer") {
       const neededCharacters = JSON.stringify({ energetic, sensitive, friendly, effective, curious });
       const job = { name, generalDescription, requirements, field, subject, city, neededCharacters, company };
       const config = {
@@ -44,16 +41,20 @@ function AddJob() {
         alert("משרה נשמרה!");
       }
     }
+
+    else {
+      alert("לא מורשה")
+    }
   }
   return (<>
-    {currentUser.role === "employee" ?
+    {currentUser != null && currentUser.role === "employee" ?
       <div className="card">
         <Card title="משתמש/ת יקר/ה">
           <p className="m-0">
             דף זה הינו בשביל מגייסים בלבד!<br></br>
             להוספת משרה יש לשנות את הפרופיל לשל מעסיק<br></br>
-            שים לב           
- פעולה זאת מוחקת את כל הנתונים 
+            שים לב
+            פעולה זאת מוחקת את כל הנתונים
           </p>
         </Card>
       </div> :

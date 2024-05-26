@@ -14,10 +14,10 @@ const Jobs = () => {
   const fields = query.get("field");
   const subjects = query.get("subject");
   const cities = query.get("city");
-  const { token } = useContext(AuthContext);
+  const { token,currentUser } = useContext(AuthContext);
   const handlesave = async () => {
     const config = {
-      headers: {
+      headers: { 
         'Authorization': 'Bearer ' + token
       }
     }
@@ -26,11 +26,9 @@ const Jobs = () => {
   }
   const getJobs = async () => {
     console.log(fields, subjects, cities);
-    const response = await fetch(`http://localhost:5000/job?fields=${fields}&subjects=${subjects}&cities=${cities}`,
-      {
-        method: 'GET',
-      })
-    const jobList = await response.json();
+    const response = await axios.get(`http://localhost:5000/job/personality/${currentUser?.email}?fields=${fields}&subjects=${subjects}&cities=${cities}`)
+    const jobList = response?.data;
+    console.log(jobList,"job")
     setJobs(jobList);
   }
   useEffect(() => { getJobs() }, [])

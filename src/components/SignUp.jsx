@@ -6,7 +6,7 @@ import { Password } from 'primereact/password';
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { TextField, Autocomplete } from "@mui/material";
 
 
@@ -48,16 +48,16 @@ const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)
             })
-        if (response.ok)
+        if (response.ok) {
             alert(` נוסף ${data.role} `);
-        else
+            setShowMessage(true);
+            form.restart();
+            navigate("/signIn");
+        }
+        else{
             alert(`לא יכול להוסיף ${data.role}`);
-        console.log(response);
-        setShowMessage(true);
-        form.restart();
-        navigate("/signIn");
-
-
+            form.restart();
+        }
     };
     const isFormFieldValid = (meta) => meta && meta.touched && meta.error;
     const getFormErrorMessage = (meta) => {

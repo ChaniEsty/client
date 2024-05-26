@@ -99,4 +99,8 @@ body {
     .icon {
       display: block;
     }
+    .carusel_img {
+      height: 90px !important;
+      padding: 20px !important;
+    }
 }
